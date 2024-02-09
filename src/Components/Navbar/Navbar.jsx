@@ -6,6 +6,7 @@ const PAGES = [
   { label: 'Home', destination: '/' },
   { label: 'View All Games', destination: '/games' },
   { label: 'View All Users', destination: '/users' },
+  { label: 'View All Restaurants', destination: '/restaurants' },
 ];
 
 function NavLink({ page }) {
