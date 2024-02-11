@@ -47,3 +47,20 @@ Use axios to send a GET request. Render the response in the browser.
 # Creating the Add Game button
 
 Use axios to send a POST request.
+
+
+Features to Implement:
+- search bar to find restaurants
+- Login Page
+    - input usernmae and password
+- Add Restaurants
+- Add Members to Group
+- Create a Group
+- Leave a Group
+
+## Main Pages
+- Login Page
+- Home Page
+- Group Page
+- Individual Restaurant Page
+- Create Group Page
