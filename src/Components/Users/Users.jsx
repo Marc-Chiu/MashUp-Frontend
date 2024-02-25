@@ -1,59 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-// function AddUserForm({ setError, fetchUsers }) {
-// 	const [first_name, setFirstName] = useState('');
-// 	const [last_name, setLastName] = useState('');
-// 	const [dob, setDob] = useState('');
-// 	const [email, setEmail] = useState('');
+function AddUserForm({ setError, fetchUsers }) {
+	const [username, setUserName] = useState('');
+	const [password, setPassword] = useState('');
+	// const [dob, setDob] = useState('');
+	// const [email, setEmail] = useState('');
 
-// 	const changeFirstName = (event) => { setFirstName(event.target.value); };
-// 	const changeLastName  = (event) => {  setLastName(event.target.value); };
-// 	const changeDob  = (event) => {  setDob(event.target.value); };
-// 	const changeEmail  = (event) => {  setEmail(event.target.value); };
+	const changeUsername = (event) => { setUserName(event.target.value); };
+	const changePassword  = (event) => { setPassword(event.target.value); };
+	// const changeDob  = (event) => {  setDob(event.target.value); };
+	// const changeEmail  = (event) => {  setEmail(event.target.value); };
 
-// 	const addUser = (event) => {
-// 		event.preventDefault();
-// 		axios.post('http://localhost:8000/users', { first_name: first_name, last_name: last_name, dob: dob, email: email }) // actual attribute name: this file's var/val
-// 			.then(() => {
-// 				setError('');
-// 				fetchUsers();
-// 			})
-// 			.catch((e) => {
-// 			    if(e.response && e.response.data && e.response.data.message) {
-// 			        setError(e.response.data.message);
-// 			    } else{
-// 			        setError('There was a problem adding a user');
-// 			    }
-// 			});
-// 	};
+	const addUser = (event) => {
+		event.preventDefault();
+		axios.post('http://localhost:8000/users', { username: username, password: password}) // actual attribute name: this file's var/val
+			.then(() => {
+				setError('');
+				fetchUsers();
+			})
+			.catch((e) => {
+			    if(e.response && e.response.data && e.response.data.message) {
+			        setError(e.response.data.message);
+			    } else{
+			        setError('There was a problem adding a user');
+			    }
+			});
+	};
 
-// 	return (
-// 		<form>
-// 			<label htmlFor="first_name">
-// 				First Name
-// 			</label>
-// 			<input type="text" id="first_name" value={first_name} onChange={changeFirstName} />
+	return (
+		<form>
+			<label htmlFor="first_name">
+				Username
+			</label>
+			<input type="text" id="first_name" value={username} onChange={changeUsername} />
 
-// 			<label htmlFor="last_name">
-// 				Last Name
-// 			</label>
-// 			<input type="text" id="last_name" value={last_name} onChange={changeLastName} />
+			<label htmlFor="last_name">
+				Password
+			</label>
+			<input type="text" id="last_name" value={password} onChange={changePassword} />
 
-// 			<label htmlFor="dob">
-// 				Date of Birth
-// 			</label>
-// 			<input type="text" id="dob" value={dob} onChange={changeDob} />
+			{/* <label htmlFor="dob">
+				Date of Birth
+			</label>
+			<input type="text" id="dob" value={dob} onChange={changeDob} />
 
-// 			<label htmlFor="email">
-// 				Email
-// 			</label>
-// 			<input type="text" id="email" value={email} onChange={changeEmail} />
+			<label htmlFor="email">
+				Email
+			</label>
+			<input type="text" id="email" value={email} onChange={changeEmail} /> */}
 
-// 			<button type="submit" onClick={addUser}>Add User</button>
-// 		</form>
-// 	);
-// }
+			<button type="submit" onClick={addUser}>Add User</button>
+		</form>
+	);
+}
 
 function Users() {
 
@@ -97,15 +97,12 @@ function Users() {
 				</div>
 			)}
 
-			{/* <AddUserForm setError={setError} fetchUsers={fetchUsers} /> */}
+			<AddUserForm setError={setError} fetchUsers={fetchUsers} />
 
 			{users.map((user) => (
-				<div key={user.user_id} className="user-container">
-					<h2>User_id: {user.user_id}</h2>
-					<p>First Name: {user.first_name}</p>
-					<p>Last Name: {user.last_name}</p>
-					<p>DOB: {user.dob}</p>
-					<p>Email: {user.email}</p>
+				<div key={user.username} className="user-container">
+					<h2>User_id: {user.username}</h2>
+					<p>Password: {user.password}</p>
 				</div>
 			))}
 		</div>
