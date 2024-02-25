@@ -1,52 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import { BACKEND_URL } from '../../constants';
 
-const Restaurants_ENDPOINT = `${BACKEND_URL}/restaurants`;
-
-function AddRestaurantForm({
-  visible,
-  cancel,
-  fetchRestaurants,
-  setError,
-}) {
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState(0);
-
-  const changeName = (event) => { setName(event.target.value); };
-  const changeNumber = (event) => { setNumber(event.target.value); };
-
-  const addRestaurant = (event) => {
-    event.preventDefault();
-    axios.post(Restaurants_ENDPOINT, { name, numPlayers: number })
-      .then(fetchRestaurants)
-      .catch(() => { setError('There was a problem adding the Restaurant.'); });
-  };
-
-  if (!visible) return null;
-  return (
-    <form>
-      <label htmlFor="name">
-        Name
-      </label>
-      <input required type="text" id="name" value={name} onChange={changeName} />
-      <label htmlFor="number-of-players">
-        Number of players
-      </label>
-      <input required type="number" id="number-of-players" onChange={changeNumber} />
-      <button type="button" onClick={cancel}>Cancel</button>
-      <button type="submit" onClick={addRestaurant}>Submit</button>
-    </form>
-  );
-}
-AddRestaurantForm.propTypes = {
-  visible: propTypes.bool.isRequired,
-  cancel: propTypes.func.isRequired,
-  fetchRestaurants: propTypes.func.isRequired,
-  setError: propTypes.func.isRequired,
-};
+const RESTAURANTS_ENDPOINTS = `${BACKEND_URL}/restaurants`;
 
 function ErrorMessage({ message }) {
   return (
@@ -59,45 +18,53 @@ ErrorMessage.propTypes = {
   message: propTypes.string.isRequired,
 };
 
-function Restaurant({ Restaurant }) {
-  const { name, numPlayers } = Restaurant;
+function Restaurant({ restaurant }) {
+const { name, rating, price, address, cuisine } = restaurant;
   return (
-    <div className="Restaurant-container">
-      <h2>{name}</h2>
-      <p>
-        Players: {numPlayers}
-      </p>
-    </div>
+    <Link to={name}>
+      <div className="game-container">
+        <h2>{name}</h2>
+        <p>rating: {rating}</p>
+        <p>price: {price}</p>
+        <p>address: {address}</p>
+        <p>cuisine: {cuisine}</p>
+      </div>
+    </Link>
   );
 }
+
 Restaurant.propTypes = {
-  Restaurant: propTypes.shape({
+  restaurant: propTypes.shape({
     name: propTypes.string.isRequired,
-    numPlayers: propTypes.number.isRequired,
+    rating: propTypes.number.isRequired,
+    price: propTypes.string.isRequired,
+    address: propTypes.string.isRequired,
+    cuisine: propTypes.string.isRequired,
   }).isRequired,
 };
 
-function RestaurantsObjectToArray({ Data }) {
+function restaurantsObjectToArray({ Data }) {
   const keys = Object.keys(Data);
-  const Restaurants = keys.map((key) => Data[key]);
-  return Restaurants;
+  const games = keys.map((key) => Data[key]);
+  return games;
 }
 
 function Restaurants() {
+  console.log("restaurants");
   const [error, setError] = useState('');
-  const [Restaurants, setRestaurants] = useState([]);
-  const [addingRestaurant, setAddingRestaurant] = useState(false);
+  const [restaurants, setRestaurants] = useState([]);
+  // const [addingGame, setAddingGame] = useState(false);
 
-  const fetchRestaurants = () => {
-    axios.get(Restaurants_ENDPOINT)
-      .then(({ data }) => setRestaurants(RestaurantsObjectToArray(data)))
-      .catch(() => setError('There was a problem retrieving the list of Restaurants.'));
+  const fetchGames = () => {
+    axios.get(RESTAURANTS_ENDPOINTS)
+      .then(({ data }) => setRestaurants(restaurantsObjectToArray(data)))
+      .catch(() => setError('There was a problem retrieving the list of games.'));
   };
 
-  const showAddRestaurantForm = () => { setAddingRestaurant(true); };
-  const hideAddRestaurantForm = () => { setAddingRestaurant(false); };
+  // const showAddGameForm = () => { setAddingGame(true); };
+  // const hideAddGameForm = () => { setAddingGame(false); };
 
-  useEffect(fetchRestaurants, []);
+  useEffect(fetchGames, []);
 
   return (
     <div className="wrapper">
@@ -105,18 +72,18 @@ function Restaurants() {
         <h1>
           View All Restaurants
         </h1>
-        <button type="button" onClick={showAddRestaurantForm}>
-          Add a Restaurant
-        </button>
+        {/* <button type="button" onClick={showAddGameForm}>
+          Add a Game
+        </button> */}
       </header>
-      <AddRestaurantForm
-        visible={addingRestaurant}
-        cancel={hideAddRestaurantForm}
-        fetchRestaurants={fetchRestaurants}
+      {/* <AddGameForm
+        visible={addingGame}
+        cancel={hideAddGameForm}
+        fetchGames={fetchGames}
         setError={setError}
-      />
+      /> */}
       {error && <ErrorMessage message={error} />}
-      {Restaurants.map((Restaurant) => <Restaurant key={Restaurant.name} Restaurant={Restaurant} />)}
+      {restaurants.map((restaurant) => <Restaurant key={restaurant.name} restaurant={restaurant} />)}
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import propTypes from 'prop-types';
 import axios from 'axios';
 
 function AddUserForm({ setError, fetchUsers }) {
