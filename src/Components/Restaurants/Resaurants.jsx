@@ -19,15 +19,16 @@ ErrorMessage.propTypes = {
 };
 
 function Restaurant({ restaurant }) {
-const { name, rating, price, address, cuisine } = restaurant;
+console.log(restaurant);
+const { name, Rating, Price, Address, Cuisine } = restaurant;
   return (
     <Link to={name}>
       <div className="game-container">
         <h2>{name}</h2>
-        <p>rating: {rating}</p>
-        <p>price: {price}</p>
-        <p>address: {address}</p>
-        <p>cuisine: {cuisine}</p>
+        <p>rating: {Rating}</p>
+        <p>price: {Price}</p>
+        <p>address: {Address}</p>
+        <p>cuisine: {Cuisine}</p>
       </div>
     </Link>
   );
@@ -36,26 +37,27 @@ const { name, rating, price, address, cuisine } = restaurant;
 Restaurant.propTypes = {
   restaurant: propTypes.shape({
     name: propTypes.string.isRequired,
-    rating: propTypes.number.isRequired,
-    price: propTypes.string.isRequired,
-    address: propTypes.string.isRequired,
-    cuisine: propTypes.string.isRequired,
+    Rating: propTypes.number.isRequired,
+    Price: propTypes.string.isRequired,
+    Address: propTypes.string.isRequired,
+    Cuisine: propTypes.string.isRequired,
   }).isRequired,
 };
 
 function restaurantsObjectToArray({ Data }) {
   const keys = Object.keys(Data);
-  const games = keys.map((key) => Data[key]);
-  return games;
+  const restaurants = keys.map((key) => Data[key]);
+  console.log(restaurants);
+  return restaurants;
 }
 
 function Restaurants() {
-  console.log("restaurants");
+  //console.log("restaurants");
   const [error, setError] = useState('');
   const [restaurants, setRestaurants] = useState([]);
   // const [addingGame, setAddingGame] = useState(false);
 
-  const fetchGames = () => {
+  const fetchRestaurants = () => {
     axios.get(RESTAURANTS_ENDPOINTS)
       .then(({ data }) => setRestaurants(restaurantsObjectToArray(data)))
       .catch(() => setError('There was a problem retrieving the list of games.'));
@@ -64,7 +66,7 @@ function Restaurants() {
   // const showAddGameForm = () => { setAddingGame(true); };
   // const hideAddGameForm = () => { setAddingGame(false); };
 
-  useEffect(fetchGames, []);
+  useEffect(fetchRestaurants, []);
 
   return (
     <div className="wrapper">
@@ -79,7 +81,7 @@ function Restaurants() {
       {/* <AddGameForm
         visible={addingGame}
         cancel={hideAddGameForm}
-        fetchGames={fetchGames}
+        fetchRestaurants={fetchRestaurants}
         setError={setError}
       /> */}
       {error && <ErrorMessage message={error} />}
