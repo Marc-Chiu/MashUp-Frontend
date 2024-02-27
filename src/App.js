@@ -11,6 +11,7 @@ import Navbar from './Components/Navbar';
 import Users from './Components/Users';
 import Resaurants from './Components/Restaurants';
 import Login from './Components/Login';
+import Groups from './Components/Groups';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="users" element={<Users />} />
         <Route path="restaurants" element={<Resaurants />} />
         <Route path="login" element={<Login />} />
+        <Route path="groups" element={<Groups />} />
       </Routes>
     </BrowserRouter>
   );

@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const PAGES = [
-  { label: 'Home', destination: '/' },
+  { label: 'Groups', destination: '/Groups' },
   { label: 'Login', destination: '/Login' },
   { label: 'View All Users', destination: '/users' },
   { label: 'View All Restaurants', destination: '/restaurants' },
