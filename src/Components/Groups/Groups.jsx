@@ -21,11 +21,16 @@ function AddGroupForm({
 
     const addGroup = (event) => {
         event.preventDefault();
-        axios.post(GROUPS_ENDPOINT, { name, member })
+        axios.post(GROUPS_ENDPOINT, { name: name, member: member })
             .then(fetchGroups)
-            .catch(() => { setError('There was a problem creating a group.'); });
-    };
-
+            .catch((e) => {
+                if(e.response && e.response.data && e.response.data.message) {
+                    setError(e.response.data.message);
+                } else{
+                    setError('There was a problem adding a group');
+                }
+            });
+    }
     if (!visible) return null;
     return (
         <form>
@@ -41,7 +46,7 @@ function AddGroupForm({
         <button type="submit" onClick={addGroup}>Submit</button>
         </form>
     );
-    }
+}
 
 AddGroupForm.propTypes = {
     visible: propTypes.bool.isRequired,
@@ -72,6 +77,7 @@ function Group({ group }) {
         </Link>
     );
 }
+
 Group.propTypes = {
     group: propTypes.shape({
         name: propTypes.string.isRequired,
@@ -85,32 +91,33 @@ function Groups() {
     const [addingGroup, setAddingGroup] = useState(false);
 
     const fetchGroups = () => {
-        axios.get('http://localhost:8000/groups')
-        .then((response) => {
-            const groupsObject = response.data.Data;
-            const keys = Object.keys(groupsObject);
-            const groupsArray = keys.map((key) => groupsObject[key]);
-            setGroups(groupsArray);
-        console.log(response.data.Data)
-            console.log("fetching data")
-        })
-        .catch((e) => {
-            if (e.response && e.response.data && e.response.data.message) {
-                setError(e.response.data.message);
-            } else {
-                setError('There was a problem retrieving the list of groups.');
-            }
-        });
+        axios.get(GROUPS_ENDPOINT)
+            .then((response) => {
+                const groupsObject = response.data.Data;
+                const groupsArray = Object.values(groupsObject).map(group => ({
+                    name: group.group_name,
+                    members: group.Members, // Flatten the array of members
+                }));
+                setGroups(groupsArray);
+            })
+            .catch((e) => {
+                if (e.response && e.response.data && e.response.data.message) {
+                    setError(e.response.data.message);
+                } else {
+                    setError('There was a problem retrieving the list of groups.');
+                }
+            });
     };
+    
 
-    const showAddGroupForm = () => { setAddingGroup(true); };
-    const hideAddGroupForm = () => { setAddingGroup(false); };
-
+    
     useEffect(
         fetchGroups,
         [],
     );
 
+    const showAddGroupForm = () => { setAddingGroup(true); };
+    const hideAddGroupForm = () => { setAddingGroup(false); };
 
     return (
         <div className="wrapper">
