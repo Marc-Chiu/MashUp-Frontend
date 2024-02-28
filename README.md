@@ -1,7 +1,7 @@
 ## MashUp
 <p align="center">
-    <img src="src/MashUpLogo_V1.png" width="120">
-    <img src="src/MashUpLogo_V2.png" width="120">
+    <img src="src/MashUpLogo_V1.png" width="150">
+    <img src="src/MashUpLogo_V2.png" width="150">
 </p>
 
 
