@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
 
+import { BACKEND_URL } from '../../constants';
+
+const USER_ENDPOINTS = `${BACKEND_URL}/users`;
+
 function AddUserForm({ setError, fetchUsers }) {
 	const [username, setUserName] = useState('');
 	const [password, setPassword] = useState('');
@@ -15,7 +19,7 @@ function AddUserForm({ setError, fetchUsers }) {
 
 	const addUser = (event) => {
 		event.preventDefault();
-		axios.post('http://localhost:8000/users', { username: username, password: password}) // actual attribute name: this file's var/val
+		axios.post(USER_ENDPOINTS, { username: username, password: password}) // actual attribute name: this file's var/val
 			.then(() => {
 				setError('');
 				fetchUsers();
@@ -63,7 +67,7 @@ function Users() {
 
 	const fetchUsers = () => {
 		console.log("fetching data")
-		axios.get('http://localhost:8000/users')
+		axios.get(USER_ENDPOINTS)
 		.then((response) => {
 			const usersObject = response.data.Data;
 			const keys = Object.keys(usersObject);
