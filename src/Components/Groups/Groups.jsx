@@ -14,14 +14,14 @@ function AddGroupForm({
     setError,
 }) {
     const [name, setName] = useState('');
-    const [member, setMember] = useState('');
+    const [Members, setMembers] = useState('');
 
     const changeName = (event) => { setName(event.target.value); };
-    const changeMember = (event) => { setMember(event.target.value); };
+    const changeMembers = (event) => { setMembers(event.target.value); };
 
     const addGroup = (event) => {
         event.preventDefault();
-        axios.post(GROUPS_ENDPOINT, { name: name, member: member })
+        axios.post(GROUPS_ENDPOINT, { name: name, Members: Members })
             .then(fetchGroups)
             .catch((e) => {
                 if(e.response && e.response.data && e.response.data.message) {
@@ -38,10 +38,10 @@ function AddGroupForm({
             Group Name
         </label>
         <input required type="text" id="name" value={name} onChange={changeName} />
-        <label htmlFor="members">
-            Member
+        <label htmlFor="Members">
+            Members
         </label>
-        <input required type="text" id="members" value={member} onChange={changeMember} />
+        <input required type="text" id="Members" value={Members} onChange={changeMembers} />
         <button type="button" onClick={cancel}>Cancel</button>
         <button type="submit" onClick={addGroup}>Submit</button>
         </form>
@@ -67,12 +67,13 @@ ErrorMessage.propTypes = {
 };
 
 function Group({ group }) {
-    const { name, member } = group;
+    console.log(group);
+    const { name, Members } = group;
     return (
         <Link to={name}>
             <div className="group-container">
                 <h2>{name}</h2>
-                <p>{member}</p>
+                <p>{Members}</p>
             </div>
         </Link>
     );
@@ -81,7 +82,7 @@ function Group({ group }) {
 Group.propTypes = {
     group: propTypes.shape({
         name: propTypes.string.isRequired,
-        member: propTypes.string.isRequired,
+        Members: propTypes.string.isRequired,
     }).isRequired,
 };
 
@@ -96,7 +97,7 @@ function Groups() {
                 const groupsObject = response.data.Data;
                 const groupsArray = Object.values(groupsObject).map(group => ({
                     name: group.group_name,
-                    members: group.Members, // Flatten the array of members
+                    Members: group.Members, // Flatten the array of Members
                 }));
                 setGroups(groupsArray);
             })
@@ -141,7 +142,7 @@ function Groups() {
         {groups.map((group) => (
             <div key={group.name} className="group-container">
                 <h2> Group Name: {group.name}</h2>
-                <p> Members: {group.member}</p>
+                <p> Members: {group.Members}</p>
             </div>
         ))}
         </div>

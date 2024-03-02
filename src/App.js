@@ -1,5 +1,5 @@
 import React from 'react';
-import { CookiesProvider, useCookies } from 'react-cookie'
+//import { CookiesProvider, useCookies } from 'react-cookie'
 import {
   BrowserRouter,
   Routes,
