@@ -32,12 +32,8 @@ const Login = ({onLogin}) => {
   };
 
   const setCookies = (data) => {
-    console.log(data)
+    //console.log(data)
     if(data.username === username && data.password === password){
-      // document.cookie = `username=${data.username}`;
-      // document.cookie = `password=${data.password}`;
-      // console.log(document.cookie)
-      // console.log(document.cookie.username)
       onLogin(data);
     } else {
       console.log("setting error")
