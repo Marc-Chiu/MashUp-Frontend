@@ -53,7 +53,7 @@ const Login = ({onLogin}) => {
     <div className="login-container"> {/* Add container class */}
       <img src="/images/MashUpLogo_V3.png" alt="Logo" className="login-image" /> {/* Add logo/image */}
       <div className="login-form">
-        <h1>Login </h1>
+        <h1 className ="login-text">Login </h1>
         <form onSubmit={handleSubmit}>
           <label>Username:</label>
           <input type="username" value={username} onChange={handleUsernameChange} />
@@ -62,6 +62,7 @@ const Login = ({onLogin}) => {
           <input type="password" value={password} onChange={handlePasswordChange} />
           <br />
           <button type="submit">Login</button>
+          <p className="Login-register"> Not Registered? <a className ="Login-register2" href="/Users">Sign up</a></p>
         </form>
         {error && <ErrorMessage message={error} />}
       </div>
