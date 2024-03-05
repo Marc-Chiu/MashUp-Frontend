@@ -6,13 +6,13 @@
 
 html {
   --poppy: hsla(356, 74%, 52%, 1);
-  --cambridge-blue: hsla(132, 27%, 63%, 1);
+  --cambridge-blue: rgb(255, 145, 77);
   --lemon-chiffon: hsla(58, 74%, 85%, 1);
   --buff: hsla(27, 64%, 65%, 1);
   --bistre: hsla(10, 31%, 19%, 1);
-  --off-white: hsla(45, 29%, 97%, 1);
+  --white: rgb(255, 255, 255);
 
-  --background-color: var(--off-white);
+  --background-color: var(--white);
   --accent-color: var(--cambridge-blue);
   background-color: var(--background-color);
 }
@@ -164,3 +164,27 @@ nav a:focus {
   margin: 0;
   font-size: 1.5rem;
 }
+
+/* Login page */
+.login-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-form {
+  flex: 1;
+  padding: 100px;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.login-image {
+  flex: 1;
+  background-color: #ffd500;
+  width: 50vw; /* Fill 50% of the viewport width */
+  height: 100vh; /* Fill 100% of the viewport height */
+  object-fit: cover; /* Fill the container while preserving aspect ratio */
+}
+

@@ -50,18 +50,21 @@ const Login = ({onLogin}) => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Username:</label>
-        <input type="username" value={username} onChange={handleUsernameChange} />
-        <br />
-        <label>Password:</label>
-        <input type="password" value={password} onChange={handlePasswordChange} />
-        <br />
-        <button type="submit">Login</button>
-      </form>
-      {error && <ErrorMessage message={error} />}
+    <div className="login-container"> {/* Add container class */}
+      <img src="/images/MashUpLogo_V3.png" alt="Logo" className="login-image" /> {/* Add logo/image */}
+      <div className="login-form">
+        <h1>Login </h1>
+        <form onSubmit={handleSubmit}>
+          <label>Username:</label>
+          <input type="username" value={username} onChange={handleUsernameChange} />
+          <br />
+          <label>Password:</label>
+          <input type="password" value={password} onChange={handlePasswordChange} />
+          <br />
+          <button type="submit">Login</button>
+        </form>
+        {error && <ErrorMessage message={error} />}
+      </div>
     </div>
   );
 };
