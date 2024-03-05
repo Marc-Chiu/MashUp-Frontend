@@ -25,13 +25,18 @@ function AddUserForm({ setError, fetchUsers }) {
 				fetchUsers();
 			})
 			.catch((e) => {
-			    if(e.response && e.response.data && e.response.data.message) {
-			        setError(e.response.data.message);
-			    } else{
-			        setError('There was a problem adding a user');
-			    }
+				if(e.response && e.response.data && e.response.data.message) {
+						setError(e.response.data.message);
+				} else{
+						setError('There was a problem adding a user');
+				}
 			});
 	};
+
+AddUserForm.propTypes = {
+	setError: propTypes.string.isRequired,
+	fetchUsers: propTypes.func.isRequired,
+};
 
 	return (
 		<form>

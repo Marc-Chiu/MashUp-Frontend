@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
- 
 import { BACKEND_URL } from '../../constants';
 
 const GROUPS_ENDPOINT = `${BACKEND_URL}/groups`;
@@ -109,9 +108,9 @@ function Groups() {
                 }
             });
     };
-    
 
-    
+
+
     useEffect(
         fetchGroups,
         [],
@@ -138,7 +137,7 @@ function Groups() {
         />
         {error && <ErrorMessage message={error} />}
 
-      
+
         {groups.map((group) => (
             <div key={group.name} className="group-container">
                 <h2> Group Name: {group.name}</h2>

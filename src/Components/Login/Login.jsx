@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 //import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import propTypes from 'prop-types';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { BACKEND_URL } from '../../constants';
+//import SignUp from '../SignUp';
 
 const LOGIN_ENPOINT = `${BACKEND_URL}/users/byname`;
 
@@ -62,12 +63,16 @@ const Login = ({onLogin}) => {
           <input type="password" value={password} onChange={handlePasswordChange} />
           <br />
           <button type="submit">Login</button>
-          <p className="Login-register"> Not Registered? <a className ="Login-register2" href="/Users">Sign up</a></p>
         </form>
+        <p className="Login-register"> Not Registered? <Link className="Login-register2" to="/SignUp"> Sign up</Link></p>
         {error && <ErrorMessage message={error} />}
       </div>
     </div>
   );
+};
+
+Login.propTypes = {
+  onLogin: propTypes.func.isRequired,
 };
 
 export default Login;

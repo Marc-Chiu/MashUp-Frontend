@@ -74,16 +74,7 @@ function Restaurants() {
         <h1>
           View All Restaurants
         </h1>
-        {/* <button type="button" onClick={showAddGameForm}>
-          Add a Game
-        </button> */}
       </header>
-      {/* <AddGameForm
-        visible={addingGame}
-        cancel={hideAddGameForm}
-        fetchRestaurants={fetchRestaurants}
-        setError={setError}
-      /> */}
       {error && <ErrorMessage message={error} />}
       {restaurants.map((restaurant) => <Restaurant key={restaurant.name} restaurant={restaurant} />)}
     </div>
