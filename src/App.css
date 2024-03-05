@@ -188,3 +188,15 @@ nav a:focus {
   object-fit: cover; /* Fill the container while preserving aspect ratio */
 }
 
+.login-text {
+  color: rgb(255, 145, 77);
+}
+
+.Login-register {
+  color: rgb(181, 181, 181);
+}
+
+.Login-register2 {
+  color: rgb(255, 145, 77);
+}
+
