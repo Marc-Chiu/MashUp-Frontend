@@ -1,9 +1,10 @@
 ## MashUp
 <p align="center">
-    <img src="src/MashUpLogo_V1.png" width="150">
-    <img src="src/MashUpLogo_V2.png" width="150">
+    <img src="public/images/MashUpLogo_V2.png" width="200">
 </p>
 
+## Backend:
+https://github.com/Marc-Chiu/MashUp
 
 ## Main Pages
 - Login Page
