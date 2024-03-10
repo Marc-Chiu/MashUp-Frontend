@@ -18,6 +18,9 @@ function Home({ user }) {
     <>
       <h1>Welcome {user}</h1>
       <Navbar />
+      <div className="sign-out-container">
+        <button className="sign-out-button">Sign Out</button>
+      </div>
       <Routes>
         <Route path="/" element={<Resaurants />} />
         <Route path="restaurants" element={<Resaurants />} />

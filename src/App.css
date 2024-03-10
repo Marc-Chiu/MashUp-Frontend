@@ -200,3 +200,13 @@ nav a:focus {
   color: rgb(255, 145, 77);
 }
 
+.sign-out-container {
+  position: absolute; 
+  top: 0; 
+  right: 0; 
+  padding: 10px;
+}
+
+.sign-out-button {
+  border-color: var(--background-color); /* Add any additional styling for your button here */
+}
