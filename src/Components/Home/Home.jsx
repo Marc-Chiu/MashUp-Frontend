@@ -11,7 +11,6 @@ import Navbar from '../Navbar';
 import Users from '../Users';
 import Resaurants from '../Restaurants';
 import Login from '../Login';
-import SignUp from '../SignUp';
 import Groups from '../Groups';
 
 function Home({ user }) {
@@ -24,7 +23,6 @@ function Home({ user }) {
         <Route path="restaurants" element={<Resaurants />} />
         <Route path="users" element={<Users />} />
         <Route path="login" element={<Login />} />
-        <Route path="signup" element={<SignUp />} />
         <Route path="groups" element={<Groups />} />
       </Routes>
     </>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const SignUp = () => {
+  console.log("i got here");
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -23,15 +24,11 @@ const SignUp = () => {
     <div>
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input type="email" value={email} onChange={handleEmailChange} />
-        </label>
+        <label>Email:</label>
+        <input type="email" value={email} onChange={handleEmailChange}/>
         <br />
-        <label>
-          Password:
-          <input type="password" value={password} onChange={handlePasswordChange} />
-        </label>
+        <label>Password:</label>
+        <input type="password" value={password} onChange={handlePasswordChange} />
         <br />
         <button type="submit">Sign Up</button>
       </form>

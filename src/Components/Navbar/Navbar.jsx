@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const PAGES = [
   { label: 'Groups', destination: '/Groups' },
-  { label: 'SignUp', destination: '/SignUp' },
+  //{ label: 'SignUp', destination: '/SignUp' },
   { label: 'View All Users', destination: '/users' },
   { label: 'View All Restaurants', destination: '/restaurants' },
 ];
