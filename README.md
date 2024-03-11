@@ -7,7 +7,8 @@
 https://github.com/Marc-Chiu/MashUp
 
 ## Main Pages
-- Login Page
+- Login Page ✔️
+- Signup Page ✔️
 - Home Page
 - Group Page
 - Individual Restaurant Page
