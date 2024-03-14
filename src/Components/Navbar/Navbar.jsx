@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 const PAGES = [
   { label: 'Groups', destination: '/Groups' },
   //{ label: 'SignUp', destination: '/SignUp' },
-  { label: 'View All Users', destination: '/users' },
-  { label: 'View All Restaurants', destination: '/restaurants' },
+  { label: 'View All Users', destination: '/Users' },
+  { label: 'Search', destination: '/Search' },
+  { label: 'View All Restaurants', destination: '/Restaurants' },
 ];
 
 function NavLink({ page }) {

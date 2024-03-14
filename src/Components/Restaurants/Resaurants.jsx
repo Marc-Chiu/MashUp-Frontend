@@ -55,7 +55,6 @@ function Restaurants() {
   //console.log("restaurants");
   const [error, setError] = useState('');
   const [restaurants, setRestaurants] = useState([]);
-  // const [addingGame, setAddingGame] = useState(false);
 
   const fetchRestaurants = () => {
     axios.get(RESTAURANTS_ENDPOINTS)
@@ -63,8 +62,6 @@ function Restaurants() {
       .catch(() => setError('There was a problem retrieving the list of games.'));
   };
 
-  // const showAddGameForm = () => { setAddingGame(true); };
-  // const hideAddGameForm = () => { setAddingGame(false); };
 
   useEffect(fetchRestaurants, []);
 
