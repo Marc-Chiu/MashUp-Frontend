@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 import { BACKEND_URL } from '../../constants';
 
@@ -22,15 +21,14 @@ function Restaurant({ restaurant }) {
 console.log(restaurant);
 const { name, Rating, Price, Address, Cuisine } = restaurant;
   return (
-    <Link to={name}>
       <div className="game-container">
         <h2>{name}</h2>
         <p>rating: {Rating}</p>
         <p>price: {Price}</p>
         <p>address: {Address}</p>
         <p>cuisine: {Cuisine}</p>
+        <button>Add</button>
       </div>
-    </Link>
   );
 }
 

@@ -8,7 +8,15 @@ import {
   Route,
 } from 'react-router-dom';
 
+import Groups from './Components/Groups';
+
 function App() {
+
+  return (
+    <div>
+<Groups />
+    </div>
+  )
 
   function handleLogin(data) {
     console.log("handling log in");
