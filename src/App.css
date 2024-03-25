@@ -210,3 +210,94 @@ nav a:focus {
 .sign-out-button {
   border-color: var(--background-color); /* Add any additional styling for your button here */
 }
+
+/* Login page */
+.login-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-form {
+  flex: 1;
+  padding: 100px;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.login-image {
+  flex: 1;
+  background-color: #ffd500;
+  width: 50vw; /* Fill 50% of the viewport width */
+  height: 100vh; /* Fill 100% of the viewport height */
+  object-fit: cover; /* Fill the container while preserving aspect ratio */
+}
+
+.login-text {
+  color: rgb(255, 145, 77);
+}
+
+.Login-register {
+  color: rgb(181, 181, 181);
+  text-align: center
+}
+
+.Login-register2 {
+  color: rgb(255, 145, 77);
+}
+
+.sign-out-container {
+  position: absolute; 
+  top: 0; 
+  right: 0; 
+  padding: 10px;
+}
+
+.sign-out-button {
+  border-color: var(--background-color); /* Add any additional styling for your button here */
+}
+
+.login-container h1{
+  font-size: 36px;
+  text-align: center
+}
+
+.login-container .input-box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 30px 0;
+}
+
+.login-container .input-box input{
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgb(255, 163, 106);
+  border-radius: 40px;
+  font-size: 16px;
+  color: black;
+  padding: 20px 45px 20px 20px;
+}
+
+.login-container .Login-register {
+  color: rgb(181, 181, 181);
+  text-align: center
+}
+
+.login-container button {
+  width: 100%;
+  height: 45px;
+  background: rgb(255, 163, 106);
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba (0, 0, 0, .1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 700;
+}
