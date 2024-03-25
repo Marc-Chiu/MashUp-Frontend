@@ -43,14 +43,14 @@ return (
   <div className="login-container"> {/* Add container class */}
     <img src="/images/MashUpLogo_V3.png" alt="Logo" className="login-image" /> {/* Add logo/image */}
     <div className="login-form">
-      <h1 className ="login-text"> Sign Up </h1>
+      <h1 className ="login-text"> Create Account </h1>
       <form>
-        <label>Username:</label>
-        <input type="email" value={username} onChange={handleUsernameChange} />
-        <br />
-        <label>Password:</label>
-        <input type="password" value={password} onChange={handlePasswordChange} />
-        <br />
+        <div className = "input-box">
+          <input type="username" placeholder = "Username" value={username} onChange={handleUsernameChange} />
+        </div>
+        <div className = "input-box">
+          <input type="password" placeholder = "Password" value={password} onChange={handlePasswordChange} />
+        </div>
         <button type="submit" onClick={addUser}>Sign up</button>
       </form>
       <p className="Login-register"> Already Registered? <Link className="Login-register2" to="/"> Login </Link></p>
