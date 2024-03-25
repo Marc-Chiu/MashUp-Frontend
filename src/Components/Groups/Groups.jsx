@@ -6,21 +6,23 @@ import { BACKEND_URL } from '../../constants';
 
 const GROUPS_ENDPOINT = `${BACKEND_URL}/groups`;
 
-function AddGroupForm({
+function MakeGroupForm({
     visible,
     cancel,
     fetchGroups,
     setError,
 }) {
-    const [name, setName] = useState('');
-    const [Members, setMembers] = useState('');
+    const [Group_Name, setName] = useState('');
+    const [name, setOwner] = useState('');
+    const [password, setPassword] = useState('');
 
     const changeName = (event) => { setName(event.target.value); };
-    const changeMembers = (event) => { setMembers(event.target.value); };
+    const changeOwner = (event) => { setOwner(event.target.value); };
+    const changePassword = (event) => { setPassword(event.target.value); };
 
     const addGroup = (event) => {
         event.preventDefault();
-        axios.post(GROUPS_ENDPOINT, { name: name, Members: Members })
+        axios.post(GROUPS_ENDPOINT, { group_name: Group_Name, Name: name, Password: password})
             .then(fetchGroups)
             .catch((e) => {
                 if(e.response && e.response.data && e.response.data.message) {
@@ -29,6 +31,7 @@ function AddGroupForm({
                     setError('There was a problem adding a group');
                 }
             });
+        location.reload();
     }
     if (!visible) return null;
     return (
@@ -36,18 +39,22 @@ function AddGroupForm({
         <label htmlFor="name">
             Group Name
         </label>
-        <input required type="text" id="name" value={name} onChange={changeName} />
+        <input required type="text" id="name" value={Group_Name} onChange={changeName} />
         <label htmlFor="Members">
             Members
         </label>
-        <input required type="text" id="Members" value={Members} onChange={changeMembers} />
+        <input required type="text" id="Members" value={name} onChange={changeOwner} />
+        <label htmlFor="password">
+            Password
+        </label>
+        <input required type="password" id="password" value={password} onChange={changePassword} />
         <button type="button" onClick={cancel}>Cancel</button>
         <button type="submit" onClick={addGroup}>Submit</button>
         </form>
     );
 }
 
-AddGroupForm.propTypes = {
+MakeGroupForm.propTypes = {
     visible: propTypes.bool.isRequired,
     cancel: propTypes.func.isRequired,
     fetchGroups: propTypes.func.isRequired,
@@ -65,6 +72,58 @@ ErrorMessage.propTypes = {
     message: propTypes.string.isRequired,
 };
 
+// Join group form
+
+function JoinGroupForm({
+    visible,
+    cancel,
+    fetchGroups,
+    setError,
+}) {
+    const [Group_Name, setName] = useState('');
+    const [password, setPassword] = useState('');
+
+    const changeName = (event) => { setName(event.target.value); };
+    const changePassword = (event) => { setPassword(event.target.value); };
+
+    const joinGroup = (event) => {
+        event.preventDefault();
+        axios.post(GROUPS_ENDPOINT + '/add_member', { group_name: Group_Name, Name: sessionStorage.getItem("user"), Password: password})
+            .then(fetchGroups)
+            .catch((e) => {
+                if(e.response && e.response.data && e.response.data.message) {
+                    setError(e.response.data.message);
+                } else{
+                    setError('There was a problem adding a group');
+                }
+            });
+        location.reload();
+    }
+    if (!visible) return null;
+    return (
+        <form>
+        <label htmlFor="name">
+            Group Name
+        </label>
+        <input required type="text" id="name" value={Group_Name} onChange={changeName} />
+        <label htmlFor="password">
+            Password
+        </label>
+        <input required type="password" id="password" value={password} onChange={changePassword} />
+        <button type="button" onClick={cancel}>Cancel</button>
+        <button type="submit" onClick={joinGroup}>Submit</button>
+        </form>
+    );
+}
+
+JoinGroupForm.propTypes = {
+    visible: propTypes.bool.isRequired,
+    cancel: propTypes.func.isRequired,
+    fetchGroups: propTypes.func.isRequired,
+    setError: propTypes.func.isRequired,
+};
+
+
 function Group({ group }) {
     console.log(group);
     const { name, Members } = group;
@@ -73,6 +132,8 @@ function Group({ group }) {
             <div className="group-container">
                 <h2>{name}</h2>
                 <p>{Members}</p>
+                <button type="button"> Leave Group </button>
+                <button type="button"> view page (not functional yet)</button>
             </div>
         </Link>
     );
@@ -89,6 +150,7 @@ function Groups() {
     const [error, setError] = useState('');
     const [groups, setGroups] = useState([]);
     const [addingGroup, setAddingGroup] = useState(false);
+    const [joiningGroup, setJoiningGroup] = useState(false);
 
     const fetchGroups = () => {
         axios.get(GROUPS_ENDPOINT)
@@ -116,8 +178,11 @@ function Groups() {
         [],
     );
 
-    const showAddGroupForm = () => { setAddingGroup(true); };
-    const hideAddGroupForm = () => { setAddingGroup(false); };
+    const showMakeGroupForm = () => { setAddingGroup(true); };
+    const hideMakeGroupForm = () => { setAddingGroup(false); };
+
+    const showJoinGroupForm = () => { setJoiningGroup(true); };
+    const hideJoinGroupForm = () => { setJoiningGroup(false); };
 
     return (
         <div className="wrapper">
@@ -125,13 +190,22 @@ function Groups() {
                 <h1>
                     View All Groups
                 </h1>
-                <button type="button" onClick={showAddGroupForm}>
-                    Add a Group
+                <button type="button" onClick={showMakeGroupForm}>
+                    Make a Group
+                </button>
+                <button type="button" onClick={showJoinGroupForm}>
+                    Join a Group
                 </button>
             </header>
-        <AddGroupForm
+        <MakeGroupForm
             visible={addingGroup}
-            cancel={hideAddGroupForm}
+            cancel={hideMakeGroupForm}
+            fetchGames={fetchGroups}
+            setError={setError}
+        />
+        <JoinGroupForm
+            visible={joiningGroup}
+            cancel={hideJoinGroupForm}
             fetchGames={fetchGroups}
             setError={setError}
         />
@@ -142,6 +216,8 @@ function Groups() {
             <div key={group.name} className="group-container">
                 <h2> Group Name: {group.name}</h2>
                 <p> Members: {group.Members}</p>
+                <button type="button"> Leave Group (not functional yet)</button>
+                <button type="button"> view page (not functional yet)</button>
             </div>
         ))}
         </div>
