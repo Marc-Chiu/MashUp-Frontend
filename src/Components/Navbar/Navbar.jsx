@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 const PAGES = [
   { label: 'Groups', destination: '/Groups' },
   //{ label: 'SignUp', destination: '/SignUp' },
-  { label: 'View All Users', destination: '/Users' },
+  { label: 'Users', destination: '/Users' },
   { label: 'Search', destination: '/Search' },
-  { label: 'View All Restaurants', destination: '/Restaurants' },
+  { label: 'Restaurants', destination: '/Restaurants' },
 ];
 
 function NavLink({ page }) {
@@ -29,6 +29,7 @@ function Navbar() {
   return (
     <nav>
       <ul className="wrapper">
+        <img src="/images/MashUpLogo_V1.png" alt="Logo" className="navbar-logo"/>
         {PAGES.map((page) => <NavLink key={page.destination} page={page} />)}
       </ul>
     </nav>

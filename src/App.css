@@ -306,3 +306,8 @@ nav a:focus {
 .login-container button:hover{
   background: rgba(255, 98, 0, 0.2);
 }
+
+.navbar-logo{
+  height: 50px;
+  width: 50px;
+}
