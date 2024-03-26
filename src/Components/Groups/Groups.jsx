@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { BACKEND_URL } from '../../constants';
+import Navbar from '../Navbar';
 
 const GROUPS_ENDPOINT = `${BACKEND_URL}/groups`;
 
@@ -31,7 +32,6 @@ function MakeGroupForm({
                     setError('There was a problem adding a group');
                 }
             });
-        location.reload();
     }
     if (!visible) return null;
     return (
@@ -87,6 +87,7 @@ function JoinGroupForm({
     const changePassword = (event) => { setPassword(event.target.value); };
 
     const joinGroup = (event) => {
+        console.log(Group_Name);
         event.preventDefault();
         axios.post(GROUPS_ENDPOINT + '/add_member', { group_name: Group_Name, Name: sessionStorage.getItem("user"), Password: password})
             .then(fetchGroups)
@@ -97,7 +98,6 @@ function JoinGroupForm({
                     setError('There was a problem adding a group');
                 }
             });
-        location.reload();
     }
     if (!visible) return null;
     return (
@@ -106,8 +106,8 @@ function JoinGroupForm({
             Group Name
         </label>
         <input required type="text" id="name" value={Group_Name} onChange={changeName} />
-        <label htmlFor="password">
-            Password
+        <label htmlFor="text">
+            Code
         </label>
         <input required type="password" id="password" value={password} onChange={changePassword} />
         <button type="button" onClick={cancel}>Cancel</button>
@@ -146,6 +146,22 @@ Group.propTypes = {
     }).isRequired,
 };
 
+function leaveGroup(group) {
+    console.log(GROUPS_ENDPOINT + '/delete/' + localStorage.getItem("user") + '/' + group)
+    axios.delete(GROUPS_ENDPOINT + '/delete/' + localStorage.getItem("user") + '/' + group)
+        .then((response) => {
+            console.log(response.data)
+            location.reload();
+            })
+        .catch((e) => {
+            if (e.response && e.response.data && e.response.data.message) {
+                console.log(e.response.data.message);
+            } else {
+                console.log('There was a problem retrieving the list of groups.');
+            }
+        });
+}
+
 function Groups() {
     const [error, setError] = useState('');
     const [groups, setGroups] = useState([]);
@@ -171,8 +187,6 @@ function Groups() {
             });
     };
 
-
-
     useEffect(
         fetchGroups,
         [],
@@ -185,41 +199,44 @@ function Groups() {
     const hideJoinGroupForm = () => { setJoiningGroup(false); };
 
     return (
-        <div className="wrapper">
-            <header>
-                <h1>
-                    View All Groups
-                </h1>
-                <button type="button" onClick={showMakeGroupForm}>
-                    Make a Group
-                </button>
-                <button type="button" onClick={showJoinGroupForm}>
-                    Join a Group
-                </button>
-            </header>
-        <MakeGroupForm
-            visible={addingGroup}
-            cancel={hideMakeGroupForm}
-            fetchGames={fetchGroups}
-            setError={setError}
-        />
-        <JoinGroupForm
-            visible={joiningGroup}
-            cancel={hideJoinGroupForm}
-            fetchGames={fetchGroups}
-            setError={setError}
-        />
-        {error && <ErrorMessage message={error} />}
+        <div>
+            <Navbar />
+            <div className="wrapper">
+                <header>
+                    <h1>
+                        View All Groups
+                    </h1>
+                    <button type="button" onClick={showMakeGroupForm}>
+                        Make a Group
+                    </button>
+                    <button type="button" onClick={showJoinGroupForm}>
+                        Join a Group
+                    </button>
+                </header>
+            <MakeGroupForm
+                visible={addingGroup}
+                cancel={hideMakeGroupForm}
+                fetchGroups={fetchGroups}
+                setError={setError}
+            />
+            <JoinGroupForm
+                visible={joiningGroup}
+                cancel={hideJoinGroupForm}
+                fetchGroups={fetchGroups}
+                setError={setError}
+            />
+            {error && <ErrorMessage message={error} />}
 
 
-        {groups.map((group) => (
-            <div key={group.name} className="group-container">
-                <h2> Group Name: {group.name}</h2>
-                <p> Members: {group.Members}</p>
-                <button type="button"> Leave Group (not functional yet)</button>
-                <button type="button"> view page (not functional yet)</button>
+            {groups.map((group) => (
+                <div key={group.name} className="group-container">
+                    <h2> Group Name: {group.name}</h2>
+                    <p> Members: {group.Members}</p>
+                    <button type="button" onClick={() => leaveGroup(group.name)} > Leave Group</button>
+                    <button type="button"> view page</button>
+                </div>
+            ))}
             </div>
-        ))}
         </div>
     );
 }

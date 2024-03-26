@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import axios from 'axios';
 
 import { BACKEND_URL } from '../../constants';
+import Navbar from '../Navbar';
 
 const RESTAURANTS_ENDPOINTS = `${BACKEND_URL}/restaurants`;
 
@@ -64,15 +65,20 @@ function Restaurants() {
   useEffect(fetchRestaurants, []);
 
   return (
-    <div className="wrapper">
-      <header>
-        <h1>
-          View All Restaurants
-        </h1>
-      </header>
-      {error && <ErrorMessage message={error} />}
-      {restaurants.map((restaurant) => <Restaurant key={restaurant.name} restaurant={restaurant} />)}
+    <div>
+      <Navbar />
+      <div className="wrapper">
+
+        <header>
+          <h1>
+            View All Restaurants
+          </h1>
+        </header>
+        {error && <ErrorMessage message={error} />}
+        {restaurants.map((restaurant) => <Restaurant key={restaurant.name} restaurant={restaurant} />)}
+      </div>
     </div>
+
   );
 }
 

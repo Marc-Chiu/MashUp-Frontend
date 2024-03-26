@@ -1,22 +1,22 @@
 import React from 'react';
-import Home from './Components/Home';
-import LoginPage from './Components/Login';
-import SignUp from './Components/SignUp';
+
 import {
   BrowserRouter,
   Routes,
   Route,
 } from 'react-router-dom';
 
+//import Users from 'Components/Users';
+import Home from './Components/Home';
+import LoginPage from './Components/Login';
+import SignUp from './Components/SignUp';
+import Restaurants from './Components/Restaurants';
+// import Login from '../Login';
+// import SignUp from '../SignUp';
 import Groups from './Components/Groups';
+import Search from './Components/Search';
 
 function App() {
-
-  return (
-    <div>
-<Groups />
-    </div>
-  )
 
   function handleLogin(data) {
     console.log("handling log in");
@@ -30,6 +30,9 @@ function App() {
       <Routes>
         <Route path="/" element={sessionStorage.getItem("user") ? <Home user={sessionStorage.getItem("user")} /> : <LoginPage onLogin={handleLogin} />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/restaurants" element={<Restaurants />} />
+        <Route path="/groups" element={<Groups />} />
+        <Route path="/search" element={<Search />} />
         {/* Add more routes as needed */}
       </Routes>
     </BrowserRouter>

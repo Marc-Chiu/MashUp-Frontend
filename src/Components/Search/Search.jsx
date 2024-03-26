@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Navbar from '../Navbar';
 
 import { BACKEND_URL } from '../../constants';
 
@@ -23,7 +24,7 @@ console.log(category);
 const { name } = category;
   return (
     <Link to={name}>
-      <div className="game-container">
+      <div className="cat-container">
         <h2>{name}</h2>
       </div>
     </Link>
@@ -43,29 +44,33 @@ function categoriesObjectToArray({ Data }) {
   return category;
 }
 
-function Categories() {
+function Search() {
   const [error, setError] = useState('');
   const [categories, setCategories] = useState([]);
 
   const fetchCategories = () => {
     axios.get(CATEGORY_ENDPOINTS)
       .then(({ data }) => setCategories(categoriesObjectToArray(data)))
-      .catch(() => setError('There was a problem retrieving the list of games.'));
+      .catch(() => setError('There was a problem retrieving the list of categories.'));
   };
 
   useEffect(fetchCategories, []);
 
   return (
-    <div className="wrapper">
-      <header>
-        <h1>
-          Search
-        </h1>
-      </header>
-      {error && <ErrorMessage message={error} />}
-      {categories.map((category) => <Category key={category.name} restaurant={category} />)}
+    <div>
+      <Navbar />
+      <div className="wrapper">
+        <header>
+          <h1>
+            Search
+          </h1>
+        </header>
+        {error && <ErrorMessage message={error} />}
+        {categories.map((category) => <Category key={category.name} category={category} />)}
+      </div>
     </div>
+
   );
 }
 
-export default Categories;
+export default Search;
