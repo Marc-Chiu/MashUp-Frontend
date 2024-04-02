@@ -4,18 +4,30 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%; /* Ensure html and body cover the entire viewport */
+  margin: 0; /* Remove default margins */
+  padding: 0; /* Remove default padding */
+}
+
 html {
   --poppy: hsla(356, 74%, 52%, 1);
-  --cambridge-blue: rgb(255, 145, 77);
+  --pumpkin-orange: rgb(255, 145, 77);
+  --tangerine: rgb(255, 182, 136);
   --lemon-chiffon: hsla(58, 74%, 85%, 1);
   --buff: hsla(27, 64%, 65%, 1);
   --bistre: hsla(10, 31%, 19%, 1);
   --white: rgb(255, 255, 255);
 
   --background-color: var(--white);
-  --accent-color: var(--cambridge-blue);
+  --accent-color: var(--pumpkin-orange);
   background-color: var(--background-color);
+  
+  background: linear-gradient(145deg, var(--tangerine) 0%, var(--pumpkin-orange) 100%);
+  background-repeat: no-repeat; /* Prevent background from repeating */
+  background-size: cover; /* Cover the entire viewport */
 }
+
 
 .wrapper {
   max-width: min(800px, 100% - 4rem);
@@ -193,7 +205,7 @@ nav a:focus {
 }
 
 .Login-register {
-  color: rgb(181, 181, 181);
+  color: rgb(209, 0, 0);
 }
 
 .Login-register2 {
@@ -235,16 +247,16 @@ nav a:focus {
 }
 
 .login-text {
-  color: rgb(255, 145, 77);
+  color: rgb(255, 255, 255);
 }
 
 .Login-register {
-  color: rgb(181, 181, 181);
+  color: rgb(255, 219, 194);
   text-align: center;
 }
 
 .Login-register2 {
-  color: rgb(255, 145, 77);
+  color: rgb(255, 255, 255);
 }
 
 .sign-out-container {
@@ -277,22 +289,22 @@ nav a:focus {
   background: transparent;
   border: none;
   outline: none;
-  border: 2px solid rgb(255, 163, 106);
+  border: 2px solid rgb(255, 184, 139);
   border-radius: 40px;
   font-size: 16px;
-  color: black;
+  color: rgb(255, 255, 255);
   padding: 20px 45px 20px 20px;
 }
 
 .login-container .Login-register {
-  color: rgb(181, 181, 181);
+  color: rgb(255, 221, 199);
   text-align: center
 }
 
 .login-container button {
   width: 100%;
   height: 45px;
-  background: rgb(255, 163, 106);
+  background: rgb(255, 182, 137);
   border: none;
   outline: none;
   border-radius: 40px;
@@ -310,4 +322,8 @@ nav a:focus {
 .navbar-logo{
   height: 50px;
   width: 50px;
+}
+
+.input-box input::placeholder{
+  color: rgb(255, 255, 255);
 }
