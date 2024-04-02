@@ -15,6 +15,7 @@ import Restaurants from './Components/Restaurants';
 // import SignUp from '../SignUp';
 import Groups from './Components/Groups';
 import Search from './Components/Search';
+import GroupHome from './Components/GroupHome';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/restaurants" element={<Restaurants />} />
         <Route path="/groups" element={<Groups />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/groupHome" element={<GroupHome />} />
         {/* Add more routes as needed */}
       </Routes>
     </BrowserRouter>

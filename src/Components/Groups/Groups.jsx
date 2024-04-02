@@ -172,10 +172,13 @@ function Groups() {
         axios.get(GROUPS_ENDPOINT)
             .then((response) => {
                 const groupsObject = response.data.Data;
-                const groupsArray = Object.values(groupsObject).map(group => ({
+                const filteredGroups = Object.values(groupsObject).filter(group => group.Members.includes(sessionStorage.getItem("user")));
+                const groupsArray = Object.values(filteredGroups).map(group => ({
                     name: group.group_name,
                     Members: group.Members, // Flatten the array of Members
                 }));
+                console.log("fetching data")
+                console.log(groupsArray);
                 setGroups(groupsArray);
             })
             .catch((e) => {
@@ -233,7 +236,7 @@ function Groups() {
                     <h2> Group Name: {group.name}</h2>
                     <p> Members: {group.Members}</p>
                     <button type="button" onClick={() => leaveGroup(group.name)} > Leave Group</button>
-                    <button type="button"> view page</button>
+                    <button type="button" onClick={() => sessionStorage.setItem("Group", group.name)}> <Link to='/groupHome'>view page</Link></button>
                 </div>
             ))}
             </div>
