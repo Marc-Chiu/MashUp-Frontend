@@ -23,10 +23,22 @@ html {
   --accent-color: var(--pumpkin-orange);
   background-color: var(--background-color);
   
-  background: linear-gradient(145deg, var(--tangerine) 0%, var(--pumpkin-orange) 100%);
-  background-size: cover; /* Cover the entire viewport */
+  background: linear-gradient(35deg, var(--tangerine), var(--pumpkin-orange), rgb(255, 224, 204));
+  background-size: 300% 300%; /* Cover the entire viewport */
+  animation: color 12s ease-in-out infinite;
 }
 
+@keyframes color{
+  0%{
+    background-position: 0 50%;
+  }
+  50%{
+    background-position: 100% 50%;
+  }
+  100%{
+    background-position: 0 50%;
+  }
+}
 
 .wrapper {
   max-width: min(800px, 100% - 4rem);
