@@ -3,11 +3,11 @@ import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const PAGES = [
+  { label: 'Home', destination: '/Restaurants' },
   { label: 'Groups', destination: '/Groups' },
   //{ label: 'SignUp', destination: '/SignUp' },
   //{ label: 'View All Users', destination: '/Users' },
   { label: 'Search', destination: '/Search' },
-  { label: 'Home', destination: '/Restaurants' },
 ];
 
 function NavLink({ page }) {
