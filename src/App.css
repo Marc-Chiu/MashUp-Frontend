@@ -132,13 +132,14 @@ nav a {
 
 nav a:hover,
 nav a:focus {
-  background-color: var(--background-color);
+  background-color:  rgb(255, 255, 255);
   color: var(--accent-color);
   outline: none;
 }
 
+/* Game CSS (for testing purposes) */
 .game-container {
-  border: 2px solid var(--accent-color);
+  border: 2px solid rgb(255, 221, 199);
   margin: 1rem 0;
   padding: 2rem;
   display: grid;
