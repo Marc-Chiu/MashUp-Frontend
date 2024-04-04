@@ -103,7 +103,7 @@ form label::after {
   width: calc(100% + 10px);
   border: 2px solid var(--accent-color);
   border-radius: 5px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   z-index: -1;
 }
 
@@ -121,8 +121,8 @@ form button[type=button]:hover {
 /* Nav Bar */
 nav {
   margin: 0;
-  padding-top: 0.1rem;
-  background-color: var(--accent-color);
+  padding-top: 0rem;
+  background-color: transparent;
 }
 
 nav ul {
@@ -130,6 +130,7 @@ nav ul {
   display: flex;
   gap: 2rem;
   padding: 0;
+  justify-content: flex-end; /* Align items to the right */
 }
 
 nav a {
@@ -139,8 +140,10 @@ nav a {
   padding: var(--padding);
   text-decoration: none;
   font-weight: bold;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 nav a:hover,
@@ -149,6 +152,19 @@ nav a:focus {
   color:white;
   outline: none;
 }
+
+.navbar-logo{
+  height: 60px;
+  width: 60px;
+}
+
+.pages-container {
+  margin-left: auto;
+  display: flex; /* Ensure pages stay in one row */
+  flex-wrap: nowrap; /* Prevent wrapping to next line */
+  gap: 2rem; /* Adjust as needed */
+}
+
 
 /* Game CSS (for testing purposes) */
 .game-container {
@@ -306,11 +322,6 @@ nav a:focus {
 
 .login-container button:hover{
   background: rgba(255, 98, 0, 0.2);
-}
-
-.navbar-logo{
-  height: 50px;
-  width: 50px;
 }
 
 .input-box input::placeholder{
