@@ -482,3 +482,89 @@ button.group-button span:nth-child(4) {
 .group-button a{
   color: black;
 }
+
+/* Resturant Like button */
+button.rest-button {
+  --button-color: rgba(255, 255, 255, 1);
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  border: 0.3em solid var(--button-color);
+  border-radius: 0.5em;
+  width: 7em;
+  height: 3em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: sans-serif;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 1em;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+  margin: 1em 0;
+  background-color: var(--button-color);
+}
+
+button.rest-button:hover {
+  background-color: rgb(252, 177, 226); 
+  color: black; 
+}
+
+button.rest-button span {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  background-color: rgb(252, 177, 226); 
+  transform: translateY(150%);
+  border-radius: 50%;
+  left: calc((var(--n) - 1) * 25%);
+  transition: 0.5s;
+  transition-delay: calc((var(--n) - 1) * 0.1s);
+  z-index: -1;
+}
+
+button.rest-button:hover span {
+  transform: translateY(0) scale(2);
+}
+
+button.rest-button span:nth-child(1) {
+  --n: 1;
+}
+
+button.rest-button span:nth-child(2) {
+  --n: 2;
+}
+
+button.rest-button span:nth-child(3) {
+  --n: 3;
+}
+
+button.rest-button span:nth-child(4) {
+  --n: 4;
+}
+
+
+/* Resturant  CSS (for testing purposes) */
+.rest-container {
+  border: 2px solid rgb(255, 221, 199);
+  margin: 1rem 0;
+  padding: 2rem;
+  border-radius: 5px;
+  max-width: min(700px);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr 150px;
+}
+
+.rest-container p{
+  font-size: 1.0rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: sans-serif;
+  letter-spacing: 0.1em;
+}
+.rest-container h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}

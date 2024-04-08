@@ -22,13 +22,15 @@ function Restaurant({ restaurant }) {
 console.log(restaurant);
 const { name, Rating, Price, Address, Cuisine } = restaurant;
   return (
-      <div className="game-container">
+      <div className="rest-container">
         <h2>{name}</h2>
         <p>rating: {Rating}</p>
         <p>price: {Price}</p>
         <p>address: {Address}</p>
         <p>cuisine: {Cuisine}</p>
-        <button>Add</button>
+        <div className = "rest-button">
+          <button type="button" className="rest-button"> Like ♡ <span></span><span></span><span></span><span></span></button>
+        </div>
       </div>
   );
 }
