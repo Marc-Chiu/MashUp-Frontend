@@ -24,10 +24,11 @@ html {
   background-color: var(--background-color);
   
   background: linear-gradient(35deg, var(--tangerine), var(--pumpkin-orange), rgb(255, 224, 204));
-  background-size: 300% 300%; /* Cover the entire viewport */
+  background-size: 300% 300%; 
   animation: color 12s ease-in-out infinite;
 }
 
+/*Gradient background animation*/
 @keyframes color{
   0%{
     background-position: 0 50%;
@@ -139,7 +140,7 @@ nav ul {
   display: flex;
   gap: 2rem;
   padding: 0;
-  justify-content: flex-end; /* Align items to the right */
+  justify-content: flex-end;
 }
 
 nav a {
@@ -169,9 +170,9 @@ nav a:focus {
 
 .pages-container {
   margin-left: auto;
-  display: flex; /* Ensure pages stay in one row */
-  flex-wrap: nowrap; /* Prevent wrapping to next line */
-  gap: 2rem; /* Adjust as needed */
+  display: flex; 
+  flex-wrap: nowrap; 
+  gap: 2rem; 
 }
 
 
@@ -202,16 +203,16 @@ nav a:focus {
 .login-form {
   flex: 1;
   padding: 100px;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center; 
+  align-items: center; 
 }
 
 .login-image {
   flex: 1;
   background-color: #ffd500;
-  width: 50vw; /* Fill 50% of the viewport width */
-  height: 100vh; /* Fill 100% of the viewport height */
-  object-fit: cover; /* Fill the container while preserving aspect ratio */
+  width: 50vw; 
+  height: 100vh; 
+  object-fit: cover; 
 }
 
 .login-text {
@@ -234,7 +235,7 @@ nav a:focus {
 }
 
 .sign-out-button {
-  border-color: var(--background-color); /* Add any additional styling for your button here */
+  border-color: var(--background-color);
 }
 
 /* Login page */
@@ -248,16 +249,16 @@ nav a:focus {
 .login-form {
   flex: 1;
   padding: 100px;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center; 
+  align-items: center; 
 }
 
 .login-image {
   flex: 1;
   background-color: #ffd500;
-  width: 50vw; /* Fill 50% of the viewport width */
-  height: 100vh; /* Fill 100% of the viewport height */
-  object-fit: cover; /* Fill the container while preserving aspect ratio */
+  width: 50vw; 
+  height: 100vh; 
+  object-fit: cover; 
 }
 
 .login-text {
@@ -281,7 +282,7 @@ nav a:focus {
 }
 
 .sign-out-button {
-  border-color: var(--background-color); /* Add any additional styling for your button here */
+  border-color: var(--background-color); 
 }
 
 .login-container h1{
@@ -397,6 +398,7 @@ nav a:focus {
   --n: 4;
 }
 
+/* centering and formatting group */
 .group-container {
   border: 2px solid rgb(255, 221, 199);
   margin: 1rem 0;
@@ -439,8 +441,8 @@ button.group-button {
 }
 
 button.group-button:hover {
-  background-color: rgb(252, 221, 177); /* Transparent background on hover */
-  color: black; /* Change text color to white on hover */
+  background-color: rgb(252, 221, 177); 
+  color: black; 
 }
 
 button.group-button span {
@@ -457,7 +459,7 @@ button.group-button span {
 }
 
 button.group-button:hover span {
-  transform: translateY(0) scale(2); /* Adjust translateY to start from the center */
+  transform: translateY(0) scale(2);
 }
 
 button.group-button span:nth-child(1) {
@@ -476,6 +478,7 @@ button.group-button span:nth-child(4) {
   --n: 4;
 }
 
+/* link text color */
 .group-button a{
   color: black;
 }
