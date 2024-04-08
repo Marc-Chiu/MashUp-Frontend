@@ -21,6 +21,7 @@ export default GroupPage;
 // import Navbar from '../Navbar';
 
 // const RESTAURANTS_ENDPOINTS = `${BACKEND_URL}/restaurants`;
+// const GROUP_ENDPOIT = `${BACKEND_URL}/groups`;
 
 // function ErrorMessage({ message }) {
 //   return (
@@ -43,7 +44,7 @@ export default GroupPage;
 //         <p>price: {Price}</p>
 //         <p>address: {Address}</p>
 //         <p>cuisine: {Cuisine}</p>
-//         <button>Add</button>
+//         <button>Like</button>
 //       </div>
 //   );
 // }
@@ -66,18 +67,42 @@ export default GroupPage;
 // }
 
 // function GroupHome() {
-//   //console.log("restaurants");
 //   const [error, setError] = useState('');
 //   const [restaurants, setRestaurants] = useState([]);
+//   const [groupRestaurants, setGroup] = useState([]);
+
+//   fetchGroups = () => {
+//     axios.get(GROUPS_ENDPOINT+ "/byname/" + sessionStorage.getItem('Group'))
+//             .then((response) => {
+//                 const groupsObject = response.data.Data;
+//                 const filteredGroups = Object.values(groupsObject).filter(group => group.name == sessionStorage.getItem('Group'));
+//                 const groupsArray = Object.values(filteredGroups).map(group => ({
+//                     name: group.group_name,
+//                     Members: group.Members, // Flatten the array of Members
+//                     Restaurants: group.Restaurants,
+//                 }));
+//                 setGroup(groupsArray);
+//                 console.log(groupsArray);
+//             })
+//             .catch((e) => {
+//                 if (e.response && e.response.data && e.response.data.message) {
+//                     setError(e.response.data.message);
+//                 } else {
+//                     setError('There was a problem retrieving the list of groups.');
+//                 }
+//             });
+//   }
 
 //   const fetchRestaurants = () => {
+//     const group = sessionStorage.getItem('Group');
+//     const restaurant =
 //     axios.get(RESTAURANTS_ENDPOINTS)
 //       .then(({ data }) => setRestaurants(restaurantsObjectToArray(data)))
 //       .catch(() => setError('There was a problem retrieving the list of games.'));
 //   };
 
 
-//   useEffect(fetchRestaurants, []);
+//   useEffect(fetchRestaurants, fetchGroups, []);
 
 //   return (
 //     <div>
