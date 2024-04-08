@@ -126,12 +126,13 @@ JoinGroupForm.propTypes = {
 
 function Group({ group }) {
     console.log(group);
-    const { name, Members } = group;
+    const { name, Members, Restaurants } = group;
     return (
         <Link to={name}>
             <div className="group-container">
                 <h2>{name}</h2>
                 <p>{Members}</p>
+                <p>{Restaurants}</p>
                 <button type="button"> Leave Group </button>
                 <button type="button"> view page (not functional yet)</button>
             </div>
@@ -143,6 +144,7 @@ Group.propTypes = {
     group: propTypes.shape({
         name: propTypes.string.isRequired,
         Members: propTypes.string.isRequired,
+        Restaurants: propTypes.string.isRequired,
     }).isRequired,
 };
 
@@ -176,6 +178,7 @@ function Groups() {
                 const groupsArray = Object.values(filteredGroups).map(group => ({
                     name: group.group_name,
                     Members: group.Members, // Flatten the array of Members
+                    Restaurants: group.Restaurants,
                 }));
                 console.log("fetching data")
                 console.log(groupsArray);
@@ -236,7 +239,8 @@ function Groups() {
             {groups.map((group) => (
                 <div key={group.name} className="group-container">
                     <h2> Group Name: {group.name}</h2>
-                    <p> Members: {group.Members.join(', ')}</p>
+                    <p> Members: {group.Members}</p>
+                    <p> Restaurants: {group.Restaurants}</p>
                     <div className = "group-button">
                         <button type="button" className="group-button" onClick={() => leaveGroup(group.name)} > Leave Group <span></span><span></span><span></span><span></span></button>
                         <button type="button" onClick={() => sessionStorage.setItem("Group", group.name)}> <Link to='/groupHome'>view page <span></span><span></span><span></span><span></span></Link></button>
