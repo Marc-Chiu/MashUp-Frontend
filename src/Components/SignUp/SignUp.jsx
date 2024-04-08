@@ -44,6 +44,7 @@ return (
     <img src="/images/MashUpLogo_V3.png" alt="Logo" className="login-image" /> {/* Add logo/image */}
     <div className="login-form">
       <h1 className ="login-text"> Create Account </h1>
+      <p className="Login-register"> Join the MashUp Community </p>
       <form>
         <div className = "input-box">
           <input type="username" placeholder = "Username" value={username} onChange={handleUsernameChange} />
