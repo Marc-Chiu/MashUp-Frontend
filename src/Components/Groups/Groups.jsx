@@ -209,12 +209,14 @@ function Groups() {
                     <h1>
                         View All Groups
                     </h1>
-                    <button type="button" onClick={showMakeGroupForm}>
-                        Make a Group
-                    </button>
-                    <button type="button" onClick={showJoinGroupForm}>
-                        Join a Group
-                    </button>
+                    <div className = "group-button">
+                        <button type="button" onClick={showMakeGroupForm}>
+                            Make a Group <span></span><span></span><span></span><span></span>
+                        </button>
+                        <button type="button" onClick={showJoinGroupForm}>
+                            Join a Group <span></span><span></span><span></span><span></span>
+                        </button>
+                    </div>
                 </header>
             <MakeGroupForm
                 visible={addingGroup}
