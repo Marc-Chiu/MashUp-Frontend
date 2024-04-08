@@ -329,14 +329,6 @@ nav a:focus {
 }
 
 /* Make a group / join a group button animation */
-.group-button body{
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .group-button button {
   --button-color: rgb(255, 255, 255);
   color: var(--button-color);
@@ -350,15 +342,13 @@ nav a:focus {
   font-family: sans-serif;
   letter-spacing: 0.1em;
   text-align: center;
-  line-height: 3em;
+  line-height: 1em;
   position: relative;
   overflow: hidden;
   z-index: 1;
   transition: 0.5s;
   margin: 1em;
   background-color: rgba(0, 0, 255, 0);
-  align-items: center;
-  justify-content: center;
 }
 
 .group-button span {
