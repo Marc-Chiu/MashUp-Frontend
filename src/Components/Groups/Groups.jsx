@@ -237,8 +237,10 @@ function Groups() {
                 <div key={group.name} className="group-container">
                     <h2> Group Name: {group.name}</h2>
                     <p> Members: {group.Members}</p>
-                    <button type="button" onClick={() => leaveGroup(group.name)} > Leave Group</button>
-                    <button type="button" onClick={() => sessionStorage.setItem("Group", group.name)}> <Link to='/groupHome'>view page</Link></button>
+                    <div className = "group-button">
+                        <button type="button" onClick={() => leaveGroup(group.name)} > Leave Group <span></span><span></span><span></span><span></span></button>
+                        <button type="button" onClick={() => sessionStorage.setItem("Group", group.name)}> <Link to='/groupHome'>view page <span></span><span></span><span></span><span></span></Link></button>
+                    </div>
                 </div>
             ))}
             </div>
