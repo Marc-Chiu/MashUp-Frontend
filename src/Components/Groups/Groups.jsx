@@ -169,6 +169,7 @@ function Groups() {
     const [groups, setGroups] = useState([]);
     const [addingGroup, setAddingGroup] = useState(false);
     const [joiningGroup, setJoiningGroup] = useState(false);
+    const [searchGroup, setSearchGroup] = useState('');
 
     const fetchGroups = () => {
         axios.get(GROUPS_ENDPOINT)
@@ -204,6 +205,8 @@ function Groups() {
     const showJoinGroupForm = () => { setJoiningGroup(true); };
     const hideJoinGroupForm = () => { setJoiningGroup(false); };
 
+    const filterGroupName = groups.filter(group => group.name.toLowerCase().includes(searchGroup.toLowerCase()));
+
     return (
         <div>
             <Navbar />
@@ -220,6 +223,7 @@ function Groups() {
                             Join a Group <span></span><span></span><span></span><span></span>
                         </button>
                     </div>
+                    <input type="text" placeholder="Search Group name" value={searchGroup} onChange={(e) => setSearchGroup(e.target.value)} />
                 </header>
             <MakeGroupForm
                 visible={addingGroup}
@@ -235,8 +239,7 @@ function Groups() {
             />
             {error && <ErrorMessage message={error} />}
 
-
-            {groups.map((group) => (
+            {filterGroupName.map((group) => (
                 <div key={group.name} className="group-container">
                     <h2> Group Name: {group.name}</h2>
                     <p> Members: {group.Members}</p>
