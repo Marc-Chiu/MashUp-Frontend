@@ -80,10 +80,9 @@ function GroupPage() {
     <div>
       <Navbar />
       <div className="wrapper">
-
         <header>
           <h1>
-            All Restaurants {group}
+          {group} Restaurants:
           </h1>
         </header>
         {error && <ErrorMessage message={error} />}

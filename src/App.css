@@ -568,3 +568,19 @@ button.rest-button span:nth-child(4) {
   margin: 0;
   font-size: 1.5rem;
 }
+
+/* Search Group Name Search Bar */
+.search-box1 {
+  width: 285px; 
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+  outline: none; 
+}
+
+.search-box1:focus {
+  border-color: white; 
+  box-shadow: 0 0 0 2px black inset;
+}

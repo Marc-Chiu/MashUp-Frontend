@@ -223,7 +223,7 @@ function Groups() {
                             Join a Group <span></span><span></span><span></span><span></span>
                         </button>
                     </div>
-                    <input type="text" placeholder="Search Group name" value={searchGroup} onChange={(e) => setSearchGroup(e.target.value)} />
+                    <input type="text" className="search-box1" placeholder="Search group name" value={searchGroup} onChange={(e) => setSearchGroup(e.target.value)} />
                 </header>
             <MakeGroupForm
                 visible={addingGroup}
