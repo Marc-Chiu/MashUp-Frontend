@@ -117,9 +117,7 @@ form label::after {
   z-index: -1;
 }
 
-form button {
-  margin-right: 1rem;
-}
+form button { margin-right: 1rem;}
 form button[type=button] {
   border-color: var(--background-color);
 }
@@ -215,17 +213,9 @@ nav a:focus {
   object-fit: cover; 
 }
 
-.login-text {
-  color: rgb(255, 145, 77);
-}
-
-.Login-register {
-  color: rgb(209, 0, 0);
-}
-
-.Login-register2 {
-  color: rgb(255, 145, 77);
-}
+.login-text {color: rgb(255, 145, 77);}
+.Login-register {color: rgb(209, 0, 0);}
+.Login-register2 {color: rgb(255, 145, 77);}
 
 .sign-out-container {
   position: absolute; 
@@ -234,9 +224,7 @@ nav a:focus {
   padding: 10px;
 }
 
-.sign-out-button {
-  border-color: var(--background-color);
-}
+.sign-out-button { border-color: var(--background-color);}
 
 /* Login page */
 .login-container {
@@ -261,18 +249,14 @@ nav a:focus {
   object-fit: cover; 
 }
 
-.login-text {
-  color: rgb(255, 255, 255);
-}
+.login-text { color: rgb(255, 255, 255);}
 
 .Login-register {
   color: rgb(255, 219, 194);
   text-align: center;
 }
 
-.Login-register2 {
-  color: rgb(255, 255, 255);
-}
+.Login-register2 { color: rgb(255, 255, 255);}
 
 .sign-out-container {
   position: absolute; 
@@ -281,9 +265,7 @@ nav a:focus {
   padding: 10px;
 }
 
-.sign-out-button {
-  border-color: var(--background-color); 
-}
+.sign-out-button { border-color: var(--background-color); }
 
 .login-container h1{
   font-size: 36px;
@@ -330,13 +312,8 @@ nav a:focus {
   font-weight: 700;
 }
 
-.login-container button:hover{
-  background: rgba(255, 98, 0, 0.2);
-}
-
-.input-box input::placeholder{
-  color: rgb(255, 255, 255);
-}
+.login-container button:hover{ background: rgba(255, 98, 0, 0.2);}
+.input-box input::placeholder{ color: rgb(255, 255, 255);}
 
 /* Make a group / join a group button animation */
 .group-button button {
@@ -374,29 +351,12 @@ nav a:focus {
   z-index: -1;
 }
 
-.group-button button:hover {
-  color: rgb(0, 0, 0);
-}
-
-.group-button button:hover span {
-  transform: translateY(0) scale(2);
-}
-
-.group-button button span:nth-child(1) {
-  --n: 1;
-}
-
-.group-button button span:nth-child(2) {
-  --n: 2;
-}
-
-.group-button button span:nth-child(3) {
-  --n: 3;
-}
-
-.group-button button span:nth-child(4) {
-  --n: 4;
-}
+.group-button button:hover { color: rgb(0, 0, 0);}
+.group-button button:hover span {transform: translateY(0) scale(2);}
+.group-button button span:nth-child(1) {--n: 1;}
+.group-button button span:nth-child(2) {--n: 2;}
+.group-button button span:nth-child(3) {--n: 3;}
+.group-button button span:nth-child(4) {--n: 4;}
 
 /* centering and formatting group */
 .group-container {
@@ -458,30 +418,14 @@ button.group-button span {
   z-index: -1;
 }
 
-button.group-button:hover span {
-  transform: translateY(0) scale(2);
-}
-
-button.group-button span:nth-child(1) {
-  --n: 1;
-}
-
-button.group-button span:nth-child(2) {
-  --n: 2;
-}
-
-button.group-button span:nth-child(3) {
-  --n: 3;
-}
-
-button.group-button span:nth-child(4) {
-  --n: 4;
-}
+button.group-button:hover span {transform: translateY(0) scale(2);}
+button.group-button span:nth-child(1) {--n: 1;}
+button.group-button span:nth-child(2) {--n: 2;}
+button.group-button span:nth-child(3) {--n: 3;}
+button.group-button span:nth-child(4) {--n: 4;}
 
 /* link text color */
-.group-button a{
-  color: black;
-}
+.group-button a{ color: black;}
 
 /* Resturant Like button */
 button.rest-button {
@@ -524,25 +468,11 @@ button.rest-button span {
   z-index: -1;
 }
 
-button.rest-button:hover span {
-  transform: translateY(0) scale(2);
-}
-
-button.rest-button span:nth-child(1) {
-  --n: 1;
-}
-
-button.rest-button span:nth-child(2) {
-  --n: 2;
-}
-
-button.rest-button span:nth-child(3) {
-  --n: 3;
-}
-
-button.rest-button span:nth-child(4) {
-  --n: 4;
-}
+button.rest-button:hover span {transform: translateY(0) scale(2);}
+button.rest-button span:nth-child(1) {--n: 1;}
+button.rest-button span:nth-child(2) {--n: 2;}
+button.rest-button span:nth-child(3) {--n: 3;}
+button.rest-button span:nth-child(4) {--n: 4;}
 
 
 /* Resturant  CSS (for testing purposes) */
@@ -592,9 +522,7 @@ button.rest-button span:nth-child(4) {
   margin-top: 20px;
 }
 
-.form-item {
-  margin-right: 10px;
-}
+.form-item { margin-right: 10px;}
 
 /* form 2*/
 .form-row2 {
@@ -603,9 +531,7 @@ button.rest-button span:nth-child(4) {
   margin-top: 20px;
 }
 
-.form-item2 {
-  margin-right: 71px;
-}
+.form-item2 { margin-right: 71px;}
 
 /* Submit button */
 button.grps-button {
@@ -648,25 +574,11 @@ button.grps-button span {
   z-index: -1;
 }
 
-button.grps-button:hover span {
-  transform: translateY(0) scale(2);
-}
-
-button.grps-button span:nth-child(1) {
-  --n: 1;
-}
-
-button.grps-button span:nth-child(2) {
-  --n: 2;
-}
-
-button.grps-button span:nth-child(3) {
-  --n: 3;
-}
-
-button.grps-button span:nth-child(4) {
-  --n: 4;
-}
+button.grps-button:hover span { transform: translateY(0) scale(2);}
+button.grps-button span:nth-child(1) { --n: 1;}
+button.grps-button span:nth-child(2) { --n: 2;}
+button.grps-button span:nth-child(3) { --n: 3;}
+button.grps-button span:nth-child(4) { --n: 4;}
 
 /*Cancel button*/
 button.grps-button2 {
@@ -709,26 +621,9 @@ button.grps-button2 span {
   z-index: -1;
 }
 
-button.grps-button2:hover span {
-  transform: translateY(0) scale(2);
-}
-
-button.grps-button2 span:nth-child(1) {
-  --n: 1;
-}
-
-button.grps-button2 span:nth-child(2) {
-  --n: 2;
-}
-
-button.grps-button2 span:nth-child(3) {
-  --n: 3;
-}
-
-button.grps-button2 span:nth-child(4) {
-  --n: 4;
-}
-
-.button-spacing {
-  margin-right: 10px;
-}
+button.grps-button2:hover span { transform: translateY(0) scale(2);}
+button.grps-button2 span:nth-child(1) {--n: 1;}
+button.grps-button2 span:nth-child(2) {--n: 2;}
+button.grps-button2 span:nth-child(3) {--n: 3;}
+button.grps-button2 span:nth-child(4) {--n: 4;}
+.button-spacing { margin-right: 10px;}
