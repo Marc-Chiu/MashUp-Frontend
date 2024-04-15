@@ -36,20 +36,28 @@ function MakeGroupForm({
     if (!visible) return null;
     return (
         <form>
-        <label htmlFor="name">
-            Group Name
-        </label>
-        <input required type="text" id="name" value={Group_Name} onChange={changeName} />
-        <label htmlFor="Members">
-            Members
-        </label>
-        <input required type="text" id="Members" value={name} onChange={changeOwner} />
-        <label htmlFor="password">
-            Password
-        </label>
-        <input required type="password" id="password" value={password} onChange={changePassword} />
-        <button type="button" onClick={cancel}>Cancel</button>
-        <button type="submit" onClick={addGroup}>Submit</button>
+            <div className="form-row">
+                <div className="form-item">
+                    <label htmlFor="name">
+                        Group Name
+                    </label>
+                    <input required type="text" id="name" value={Group_Name} onChange={changeName} />
+                </div>
+                <div className="form-item">
+                    <label htmlFor="Members">
+                        Members
+                    </label>
+                    <input required type="text" id="Members" value={name} onChange={changeOwner} />
+                </div>
+                <div className="form-item">
+                    <label htmlFor="password">
+                        Password
+                    </label>
+                    <input required type="password" id="password" value={password} onChange={changePassword} />
+                </div>
+            </div>
+            <button type="button" onClick={cancel}>Cancel</button>
+            <button type="submit" onClick={addGroup}>Submit</button>
         </form>
     );
 }
@@ -102,16 +110,22 @@ function JoinGroupForm({
     if (!visible) return null;
     return (
         <form>
-        <label htmlFor="name">
-            Group Name
-        </label>
-        <input required type="text" id="name" value={Group_Name} onChange={changeName} />
-        <label htmlFor="text">
-            Code
-        </label>
-        <input required type="password" id="password" value={password} onChange={changePassword} />
-        <button type="button" onClick={cancel}>Cancel</button>
-        <button type="submit" onClick={joinGroup}>Submit</button>
+            <div className="form-row2">
+                <div className="form-item2">
+                    <label htmlFor="name">
+                        Group Name
+                    </label>
+                    <input required type="text" id="name" value={Group_Name} onChange={changeName} />
+                </div>
+                <div className="form-item2">
+                    <label htmlFor="password">
+                        Code
+                    </label>
+                    <input required type="password" id="password" value={password} onChange={changePassword} />
+                </div>
+            </div>
+            <button type="button" onClick={cancel}>Cancel</button>
+            <button type="submit" onClick={joinGroup}>Submit</button>
         </form>
     );
 }
