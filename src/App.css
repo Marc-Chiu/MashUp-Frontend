@@ -607,3 +607,128 @@ button.rest-button span:nth-child(4) {
   margin-right: 71px;
 }
 
+/* Submit button */
+button.grps-button {
+  --button-color: rgba(255, 255, 255, 1);
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  border: 0.3em solid var(--button-color);
+  border-radius: 0.5em;
+  width: 7em;
+  height: 3em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: sans-serif;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 1em;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+  margin: 1em 0;
+  background-color: var(--button-color);
+}
+
+button.grps-button:hover {
+  background-color: rgb(177, 229, 252); 
+  color: black; 
+}
+
+button.grps-button span {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  background-color: rgb(177, 229, 252); 
+  transform: translateY(150%);
+  border-radius: 50%;
+  left: calc((var(--n) - 1) * 25%);
+  transition: 0.5s;
+  transition-delay: calc((var(--n) - 1) * 0.1s);
+  z-index: -1;
+}
+
+button.grps-button:hover span {
+  transform: translateY(0) scale(2);
+}
+
+button.grps-button span:nth-child(1) {
+  --n: 1;
+}
+
+button.grps-button span:nth-child(2) {
+  --n: 2;
+}
+
+button.grps-button span:nth-child(3) {
+  --n: 3;
+}
+
+button.grps-button span:nth-child(4) {
+  --n: 4;
+}
+
+/*Cancel button*/
+button.grps-button2 {
+  --button-color: rgba(255, 255, 255, 1);
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  border: 0.3em solid var(--button-color);
+  border-radius: 0.5em;
+  width: 7em;
+  height: 3em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: sans-serif;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 1em;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+  margin: 1em 0;
+  background-color: var(--button-color);
+}
+
+button.grps-button2:hover {
+  background-color:  rgb(252, 221, 177);
+  color: black; 
+}
+
+button.grps-button2 span {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  background-color:  rgb(252, 221, 177);
+  transform: translateY(150%);
+  border-radius: 50%;
+  left: calc((var(--n) - 1) * 25%);
+  transition: 0.5s;
+  transition-delay: calc((var(--n) - 1) * 0.1s);
+  z-index: -1;
+}
+
+button.grps-button2:hover span {
+  transform: translateY(0) scale(2);
+}
+
+button.grps-button2 span:nth-child(1) {
+  --n: 1;
+}
+
+button.grps-button2 span:nth-child(2) {
+  --n: 2;
+}
+
+button.grps-button2 span:nth-child(3) {
+  --n: 3;
+}
+
+button.grps-button2 span:nth-child(4) {
+  --n: 4;
+}
+
+.button-spacing {
+  margin-right: 10px;
+}

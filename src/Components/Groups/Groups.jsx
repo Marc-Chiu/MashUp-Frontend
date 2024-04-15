@@ -56,8 +56,9 @@ function MakeGroupForm({
                     <input required type="password" id="password" value={password} onChange={changePassword} />
                 </div>
             </div>
-            <button type="button" onClick={cancel}>Cancel</button>
-            <button type="submit" onClick={addGroup}>Submit</button>
+            <button type="submit" className="grps-button2" onClick={cancel}>Cancel <span></span><span></span><span></span><span></span></button>
+            <span className="button-spacing"></span>
+            <button type="submit" className="grps-button" onClick={addGroup}>Submit <span></span><span></span><span></span><span></span></button>
         </form>
     );
 }
@@ -124,8 +125,9 @@ function JoinGroupForm({
                     <input required type="password" id="password" value={password} onChange={changePassword} />
                 </div>
             </div>
-            <button type="button" onClick={cancel}>Cancel</button>
-            <button type="submit" onClick={joinGroup}>Submit</button>
+            <button type="submit" className="grps-button2" onClick={cancel}>Cancel <span></span><span></span><span></span><span></span></button>
+            <span className="button-spacing"></span>
+            <button type="submit" className="grps-button" onClick={joinGroup}>Submit <span></span><span></span><span></span><span></span></button>
         </form>
     );
 }
