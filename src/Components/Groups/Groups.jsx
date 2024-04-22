@@ -149,8 +149,6 @@ function Group({ group }) {
                 <h2>{name}</h2>
                 <p>{Members}</p>
                 <p>{Restaurants}</p>
-                <button type="button"> Leave Group </button>
-                <button type="button"> view page (not functional yet)</button>
             </div>
         </Link>
     );
@@ -166,7 +164,7 @@ Group.propTypes = {
 
 function leaveGroup(group) {
     console.log(GROUPS_ENDPOINT + '/delete/' + localStorage.getItem("user") + '/' + group)
-    axios.delete(GROUPS_ENDPOINT + '/delete/' + localStorage.getItem("user") + '/' + group)
+    axios.delete(GROUPS_ENDPOINT + '/delete/user' + localStorage.getItem("user") + '/' + group)
         .then((response) => {
             console.log(response.data)
             location.reload();
