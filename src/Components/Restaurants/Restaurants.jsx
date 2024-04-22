@@ -5,7 +5,9 @@ import axios from 'axios';
 import { BACKEND_URL } from '../../constants';
 import Navbar from '../Navbar';
 
+
 const RESTAURANTS_ENDPOINTS = `${BACKEND_URL}/restaurants`;
+const GROUPS_ENDPOINT = `${BACKEND_URL}/groups`;
 
 function ErrorMessage({ message }) {
   return (
@@ -18,10 +20,97 @@ ErrorMessage.propTypes = {
   message: propTypes.string.isRequired,
 };
 
-function Restaurant({ restaurant }) {
-console.log(restaurant);
-const { name, Rating, Price, Address, Cuisine } = restaurant;
+
+
+function SendGroupForm({
+  visible,
+  cancel,
+  setError,
+  restaurant_name,
+}) {
+  const [groups, setGroups] = useState([]);
+  const [selectedGroup, setGroup] = useState('');
+
+  const changeGroup = (event) => {setGroup(event.target.value); };
+
+  const fetchGroups = () => {
+    axios.get(GROUPS_ENDPOINT)
+        .then((response) => {
+            const groupsObject = response.data.Data;
+            const filteredGroups = Object.values(groupsObject).filter(group => group.Members.includes(sessionStorage.getItem("user")));
+            const groupsArray = Object.values(filteredGroups).map(group => ({
+                name: group.group_name,
+            }));
+            setGroups(groupsArray);
+        })
+        .catch((e) => {
+            if (e.response && e.response.data && e.response.data.message) {
+                setError(e.response.data.message);
+            } else {
+                setError('There was a problem retrieving the list of groups.');
+            }
+        });
+  };
+
+  useEffect(
+      fetchGroups,
+      [],
+  );
+
+  const addToGroup = () => {
+    axios.post(GROUPS_ENDPOINT + '/add_restaurant', { group_name: selectedGroup, Restaurants: restaurant_name})
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((e) => {
+          console.log(e);
+            if (e.response && e.response.data && e.response.data.message) {
+                setError(e.response.data.message);
+            } else {
+                setError('There was a problem retrieving the list of groups.');
+            }
+        });
+    };
+
+  if (!visible) return null;
   return (
+    <form>
+    {groups.map((group) => (
+      <div key={group.name} className="rest-container">
+        <label className="wrapper">
+          <input
+            type="radio"
+            name={restaurant_name}
+            value={group.name}
+            onChange={changeGroup}
+            checked={selectedGroup === group.name}
+          />
+          {group.name}
+        </label>
+      </div>
+    ))}
+    <button type="submit" onClick={addToGroup}>Submit</button>
+    <button type="button" onClick={cancel}>Cancel</button>
+  </form>
+  );
+}
+
+SendGroupForm.propTypes = {
+  visible: propTypes.bool.isRequired,
+  cancel: propTypes.func.isRequired,
+  setError: propTypes.func.isRequired,
+  restaurant_name: propTypes.string.isRequired,
+};
+
+
+function Restaurant({ restaurant }) {
+  const [error, setError] = useState('');
+  const [showForm, setShowForm] = useState(false);
+  const hideForm = () => { setShowForm(false); };
+  const showGroupFrom = () => { setShowForm(true); };
+  const { name, Rating, Price, Address, Cuisine } = restaurant;
+  return (
+    <div>
       <div className="rest-container">
         <h2>{name}</h2>
         <p>rating: {Rating}</p>
@@ -29,9 +118,20 @@ const { name, Rating, Price, Address, Cuisine } = restaurant;
         <p>address: {Address}</p>
         <p>cuisine: {Cuisine}</p>
         <div className = "rest-button">
-          <button type="button" className="rest-button"> Like ♡ <span></span><span></span><span></span><span></span></button>
+          <button onClick={showGroupFrom} type="button" className="rest-button"> Like ♡ <span></span><span></span><span></span><span></span></button>
         </div>
       </div>
+      <div>
+      <SendGroupForm
+        visible={showForm}
+        cancel={hideForm}
+        setError={setError}
+        restaurant_name={name}
+      />
+      {error && <ErrorMessage message={error} />}
+      </div>
+    </div>
+
   );
 }
 
@@ -48,12 +148,10 @@ Restaurant.propTypes = {
 function restaurantsObjectToArray({ Data }) {
   const keys = Object.keys(Data);
   const restaurants = keys.map((key) => Data[key]);
-  console.log(restaurants);
   return restaurants;
 }
 
 function Restaurants() {
-  //console.log("restaurants");
   const [error, setError] = useState('');
   const [restaurants, setRestaurants] = useState([]);
 
