@@ -20,6 +20,21 @@ ErrorMessage.propTypes = {
   message: propTypes.string.isRequired,
 };
 
+function removeRestaurant(restaurant) {
+  axios.delete(GROUP_ENDPOINT + '/delete/restaurant/' + restaurant + '/' + sessionStorage.getItem("Group"))
+      .then((response) => {
+          console.log(response.data)
+          location.reload();
+          })
+      .catch((e) => {
+          if (e.response && e.response.data && e.response.data.message) {
+              console.log(e.response.data.message);
+          } else {
+              console.log('There was a problem retrieving the list of groups.');
+          }
+      });
+}
+
 function Restaurant({ restaurant }) {
 console.log(restaurant);
 const { name, Rating, Price, Address, Cuisine } = restaurant;
@@ -30,6 +45,9 @@ const { name, Rating, Price, Address, Cuisine } = restaurant;
         <p>price: {Price}</p>
         <p>address: {Address}</p>
         <p>cuisine: {Cuisine}</p>
+        <div className = "rest-button">
+          <button type="button" onClick={() => removeRestaurant(name)} className="rest-button"> remove <span></span><span></span><span></span><span></span></button>
+        </div>
       </div>
   );
 }
@@ -94,76 +112,3 @@ function GroupPage() {
 }
 
 export default GroupPage;
-
-// import React, { useEffect, useState } from 'react';
-// import propTypes from 'prop-types';
-// import axios from 'axios';
-
-// import { BACKEND_URL } from '../../constants';
-// import Navbar from '../Navbar';
-
-
-// function restaurantsObjectToArray({ Data }) {
-//   const keys = Object.keys(Data);
-//   const restaurants = keys.map((key) => Data[key]);
-//   console.log(restaurants);
-//   return restaurants;
-// }
-
-// function GroupHome() {
-//   const [error, setError] = useState('');
-//   const [restaurants, setRestaurants] = useState([]);
-//   const [groupRestaurants, setGroup] = useState([]);
-
-//   fetchGroups = () => {
-//     axios.get(GROUPS_ENDPOINT+ "/byname/" + sessionStorage.getItem('Group'))
-//             .then((response) => {
-//                 const groupsObject = response.data.Data;
-//                 const filteredGroups = Object.values(groupsObject).filter(group => group.name == sessionStorage.getItem('Group'));
-//                 const groupsArray = Object.values(filteredGroups).map(group => ({
-//                     name: group.group_name,
-//                     Members: group.Members, // Flatten the array of Members
-//                     Restaurants: group.Restaurants,
-//                 }));
-//                 setGroup(groupsArray);
-//                 console.log(groupsArray);
-//             })
-//             .catch((e) => {
-//                 if (e.response && e.response.data && e.response.data.message) {
-//                     setError(e.response.data.message);
-//                 } else {
-//                     setError('There was a problem retrieving the list of groups.');
-//                 }
-//             });
-//   }
-
-//   const fetchRestaurants = () => {
-//     const group = sessionStorage.getItem('Group');
-//     const restaurant =
-//     axios.get(RESTAURANTS_ENDPOINTS)
-//       .then(({ data }) => setRestaurants(restaurantsObjectToArray(data)))
-//       .catch(() => setError('There was a problem retrieving the list of games.'));
-//   };
-
-
-//   useEffect(fetchRestaurants, fetchGroups, []);
-
-//   return (
-//     <div>
-//       <Navbar />
-//       <div className="wrapper">
-
-//         <header>
-//           <h1>
-//             View All Restaurants
-//           </h1>
-//         </header>
-//         {error && <ErrorMessage message={error} />}
-//         {restaurants.map((restaurant) => <Restaurant key={restaurant.name} restaurant={restaurant} />)}
-//       </div>
-//     </div>
-
-//   );
-// }
-
-// export default GroupHome;
