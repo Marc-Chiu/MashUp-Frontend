@@ -22,9 +22,9 @@ html {
   --background-color: var(--white);
   --accent-color: var(--pumpkin-orange);
   background-color: var(--background-color);
-  
+
   background: linear-gradient(35deg, var(--tangerine), var(--pumpkin-orange), rgb(255, 224, 204));
-  background-size: 300% 300%; 
+  background-size: 300% 300%;
   animation: color 12s ease-in-out infinite;
 }
 
@@ -168,9 +168,9 @@ nav a:focus {
 
 .pages-container {
   margin-left: auto;
-  display: flex; 
-  flex-wrap: nowrap; 
-  gap: 2rem; 
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2rem;
 }
 
 
@@ -201,16 +201,16 @@ nav a:focus {
 .login-form {
   flex: 1;
   padding: 100px;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
 }
 
 .login-image {
   flex: 1;
   background-color: #ffd500;
-  width: 50vw; 
-  height: 100vh; 
-  object-fit: cover; 
+  width: 50vw;
+  height: 100vh;
+  object-fit: cover;
 }
 
 .login-text {color: rgb(255, 145, 77);}
@@ -218,9 +218,9 @@ nav a:focus {
 .Login-register2 {color: rgb(255, 145, 77);}
 
 .sign-out-container {
-  position: absolute; 
-  top: 0; 
-  right: 0; 
+  position: absolute;
+  top: 0;
+  right: 0;
   padding: 10px;
 }
 
@@ -237,16 +237,16 @@ nav a:focus {
 .login-form {
   flex: 1;
   padding: 100px;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
 }
 
 .login-image {
   flex: 1;
   background-color: #ffd500;
-  width: 50vw; 
-  height: 100vh; 
-  object-fit: cover; 
+  width: 50vw;
+  height: 100vh;
+  object-fit: cover;
 }
 
 .login-text { color: rgb(255, 255, 255);}
@@ -259,13 +259,15 @@ nav a:focus {
 .Login-register2 { color: rgb(255, 255, 255);}
 
 .sign-out-container {
-  position: absolute; 
-  top: 0; 
-  right: 0; 
+  position: absolute;
+  top: 0;
+  right: 0;
   padding: 10px;
 }
 
-.sign-out-button { border-color: var(--background-color); }
+.sign-out-button {
+  border-color: var(--background-color);
+}
 
 .login-container h1{
   font-size: 36px;
@@ -277,7 +279,7 @@ nav a:focus {
   width: 100%;
   height: 50px;
   margin: 30px 0;
-  
+
 }
 
 .login-container .input-box input{
@@ -401,8 +403,8 @@ button.group-button {
 }
 
 button.group-button:hover {
-  background-color: rgb(252, 221, 177); 
-  color: black; 
+  background-color: rgb(252, 221, 177);
+  color: black;
 }
 
 button.group-button span {
@@ -451,15 +453,15 @@ button.rest-button {
 }
 
 button.rest-button:hover {
-  background-color: rgb(252, 177, 226); 
-  color: black; 
+  background-color: rgb(252, 177, 226);
+  color: black;
 }
 
 button.rest-button span {
   position: absolute;
   width: 25%;
   height: 100%;
-  background-color: rgb(252, 177, 226); 
+  background-color: rgb(252, 177, 226);
   transform: translateY(150%);
   border-radius: 50%;
   left: calc((var(--n) - 1) * 25%);
@@ -501,17 +503,17 @@ button.rest-button span:nth-child(4) {--n: 4;}
 
 /* Search Group Name Search Bar */
 .search-box1 {
-  width: 285px; 
+  width: 285px;
   padding: 10px;
   border: 1px solid #ffffff;
   border-radius: 5px;
   font-size: 16px;
   box-sizing: border-box;
-  outline: none; 
+  outline: none;
 }
 
 .search-box1:focus {
-  border-color: white; 
+  border-color: white;
   box-shadow: 0 0 0 2px black inset;
 }
 
@@ -557,15 +559,15 @@ button.grps-button {
 }
 
 button.grps-button:hover {
-  background-color: rgb(177, 229, 252); 
-  color: black; 
+  background-color: rgb(177, 229, 252);
+  color: black;
 }
 
 button.grps-button span {
   position: absolute;
   width: 25%;
   height: 100%;
-  background-color: rgb(177, 229, 252); 
+  background-color: rgb(177, 229, 252);
   transform: translateY(150%);
   border-radius: 50%;
   left: calc((var(--n) - 1) * 25%);
@@ -605,7 +607,7 @@ button.grps-button2 {
 
 button.grps-button2:hover {
   background-color:  rgb(252, 221, 177);
-  color: black; 
+  color: black;
 }
 
 button.grps-button2 span {
