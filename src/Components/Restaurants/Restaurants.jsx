@@ -74,25 +74,28 @@ function SendGroupForm({
 
   if (!visible) return null;
   return (
-    <form>
-    {groups.map((group) => (
-      <div key={group.name} className="rest-container">
-        <label className="wrapper">
-          <input
-            type="radio"
-            name={restaurant_name}
-            value={group.name}
-            onChange={changeGroup}
-            checked={selectedGroup === group.name}
-          />
-          {group.name}
-        </label>
-      </div>
-    ))}
-    <button type="submit" className="grps-button2" onClick={cancel}>Cancel <span></span><span></span><span></span><span></span></button>
-    <span className="button-spacing"></span>
-    <button type="submit" className="grps-button" onClick={addToGroup}>Submit <span></span><span></span><span></span><span></span></button>
-  </form>
+    <div className="like-container">
+      <p> Which group would you like to add it to?</p>
+      {groups.map((group) => (
+        <div key={group.name} className="like-container2">
+          <label className="new-wrapper">
+            <input
+              type="radio"
+              name={restaurant_name}
+              value={group.name}
+              onChange={changeGroup}
+              checked={selectedGroup === group.name}
+            />
+            {group.name}
+          </label>
+        </div>
+      ))}
+    <div className="like-container3">
+      <button type="submit" className="grps-button3" onClick={cancel}>Cancel <span></span><span></span><span></span><span></span></button>
+      <span className="button-spacing"></span>
+      <button type="submit" className="grps-button4" onClick={addToGroup}>Submit <span></span><span></span><span></span><span></span></button>
+    </div>
+  </div>
   );
 }
 
