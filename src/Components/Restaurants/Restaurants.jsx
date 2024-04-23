@@ -89,8 +89,9 @@ function SendGroupForm({
         </label>
       </div>
     ))}
-    <button type="submit" onClick={addToGroup}>Submit</button>
-    <button type="button" onClick={cancel}>Cancel</button>
+    <button type="submit" className="grps-button2" onClick={cancel}>Cancel <span></span><span></span><span></span><span></span></button>
+    <span className="button-spacing"></span>
+    <button type="submit" className="grps-button" onClick={addToGroup}>Submit <span></span><span></span><span></span><span></span></button>
   </form>
   );
 }
@@ -158,7 +159,7 @@ function Restaurants() {
   const fetchRestaurants = () => {
     axios.get(RESTAURANTS_ENDPOINTS)
       .then(({ data }) => setRestaurants(restaurantsObjectToArray(data)))
-      .catch(() => setError('There was a problem retrieving the list of games.'));
+      .catch(() => setError('There was a problem retrieving the list of resturants.'));
   };
 
 
@@ -168,7 +169,6 @@ function Restaurants() {
     <div>
       <Navbar />
       <div className="wrapper">
-
         <header>
           <h1>
             View All Restaurants
