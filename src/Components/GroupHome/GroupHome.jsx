@@ -39,14 +39,14 @@ function Restaurant({ restaurant }) {
 console.log(restaurant);
 const { name, Rating, Price, Address, Cuisine } = restaurant;
   return (
-      <div className="game-container">
+      <div className="rest-container">
         <h2>{name}</h2>
         <p>rating: {Rating}</p>
         <p>price: {Price}</p>
         <p>address: {Address}</p>
         <p>cuisine: {Cuisine}</p>
-        <div className = "rest-button">
-          <button type="button" onClick={() => removeRestaurant(name)} className="rest-button"> remove <span></span><span></span><span></span><span></span></button>
+        <div className = "rest-button1">
+          <button type="button" onClick={() => removeRestaurant(name)} className="rest-button1"> remove <span></span><span></span><span></span><span></span></button>
         </div>
       </div>
   );

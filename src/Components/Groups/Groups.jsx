@@ -260,7 +260,7 @@ function Groups() {
                     {/*<p> Restaurants: {group.Restaurants}</p>*/}
                     <div className = "group-button">
                         <button type="button" className="group-button" onClick={() => leaveGroup(group.name)} > Leave Group <span></span><span></span><span></span><span></span></button>
-                        <button type="button" onClick={() => sessionStorage.setItem("Group", group.name)}> <Link to='/groupHome'>view page <span></span><span></span><span></span><span></span></Link></button>
+                        <button type="button" className="group-button1" onClick={() => sessionStorage.setItem("Group", group.name)}> <Link to='/groupHome'>view page <span></span><span></span><span></span><span></span></Link></button>
                     </div>
                 </div>
             ))}
