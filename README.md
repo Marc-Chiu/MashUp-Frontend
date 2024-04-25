@@ -13,12 +13,12 @@ The frontend of our project for the design project class. The project idea is to
 ## Backend Repository:
 https://github.com/Marc-Chiu/MashUp
 
-## Main Pages
-- Login Page
-- Signup Page
-- Home Page (Restaurant)
-- Groups Page
-- Group Home Page
+## Main Pages / Features
+- **Login Page:** Allows returning users to log into their account by entering their username and password.
+- **Signup Page:** Enables new users to sign up by creating a username and password
+- **Home Page:** Displays all restaurants. Enables users to add the restaurant to a group.
+- **Groups Page:** Displays all groups the user is a part of. Allows users to create their own or join another group. Users also have the ability to use the search filter bar to quickly locate a specific group and also access individual group pages.
+- **GroupHome Page:** Individual group page that displays a list of restaurants that members have added to the group. Allows users to also remove restaurants from the group. 
 
 ## Setup and Run
 1. Run `npm install` 
