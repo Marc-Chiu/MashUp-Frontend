@@ -47,6 +47,7 @@ function categoriesObjectToArray({ Data }) {
 function Search() {
   const [error, setError] = useState('');
   const [categories, setCategories] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const fetchCategories = () => {
     axios.get(CATEGORY_ENDPOINTS)
@@ -56,6 +57,14 @@ function Search() {
 
   useEffect(fetchCategories, []);
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredCategories = categories.filter(category => 
+    category.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div>
       <Navbar />
@@ -64,9 +73,15 @@ function Search() {
           <h1>
             Search
           </h1>
+          <input
+            type="text"
+            placeholder="Search categories..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
         </header>
         {error && <ErrorMessage message={error} />}
-        {categories.map((category) => <Category key={category.name} category={category} />)}
+        {filteredCategories.map((category) => <Category key={category.name} category={category} />)}
       </div>
     </div>
 
