@@ -4,12 +4,6 @@
 </p>
 The frontend of our project for the design project class. The project idea is to create an application that allows friends and family to upload restaurants that best match their food preferences.
 
-### Group Members:
-- Marc Chiu
-- Hah-Young Kim
-- Swanyee Aung
-- Tahmid Asif
-
 ## Backend Repository:
 https://github.com/Marc-Chiu/MashUp
 
