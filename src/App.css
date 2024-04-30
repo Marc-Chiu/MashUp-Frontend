@@ -522,7 +522,7 @@ button.rest-button1 span {
   max-width: min(700px);
   margin-inline: auto;
   display: grid;
-  grid-template-columns: 1fr 150px;
+  grid-template-columns: 1fr 250px;
 }
 
 .rest-container p{
