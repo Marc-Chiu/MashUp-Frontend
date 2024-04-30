@@ -256,7 +256,7 @@ function Groups() {
             {filterGroupName.map((group) => (
                 <div key={group.name} className="group-container">
                     <h2> Group Name: {group.name}</h2>
-                    <p> Members: {group.Members}</p>
+                    { /* <p> Members: {group.Members}</p>*/ }
                     {/*<p> Restaurants: {group.Restaurants}</p>*/}
                     <div className = "group-button">
                         <button type="button" className="group-button" onClick={() => leaveGroup(group.name)} > Leave Group <span></span><span></span><span></span><span></span></button>
