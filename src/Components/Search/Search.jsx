@@ -61,9 +61,9 @@ function Search() {
     setSearchTerm(event.target.value);
   };
 
-  const filteredCategories = categories.filter(category => 
-    category.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredCategories = categories.filter(category =>
+    category.name && category.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );  
 
   return (
     <div>
