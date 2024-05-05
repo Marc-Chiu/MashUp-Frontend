@@ -23,7 +23,7 @@ function Category({ category }) {
 const name = category["category"];
   return (
     <Link to={name}>
-      <div className="rest-container">
+      <div className="category-container">
         <h2>{name}</h2>
       </div>
     </Link>
