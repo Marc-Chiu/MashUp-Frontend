@@ -19,3 +19,4 @@ https://github.com/Marc-Chiu/MashUp
 1. Run `npm install` 
 2. Use `npm start`
 3. Accessible at  `http://localhost:3000`
+4. For testsing purposes sign in with: username: test, password: test
