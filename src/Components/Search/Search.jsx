@@ -20,11 +20,10 @@ ErrorMessage.propTypes = {
 };
 
 function Category({ category }) {
-console.log(category);
-const { name } = category;
+const name = category["category"];
   return (
     <Link to={name}>
-      <div className="cat-container">
+      <div className="rest-container">
         <h2>{name}</h2>
       </div>
     </Link>
@@ -34,13 +33,13 @@ const { name } = category;
 Category.propTypes = {
   category: propTypes.shape({
     name: propTypes.string.isRequired,
+    category: propTypes.string.isRequired,
   }).isRequired,
 };
 
 function categoriesObjectToArray({ Data }) {
   const keys = Object.keys(Data);
   const category = keys.map((key) => Data[key]);
-  console.log(category);
   return category;
 }
 
@@ -61,9 +60,9 @@ function Search() {
     setSearchTerm(event.target.value);
   };
 
-  const filteredCategories = categories.filter(category =>
-    category.name && category.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );  
+  // const filteredCategories = categories.filter(category =>
+  //   category.name && category.name.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
 
   return (
     <div>
@@ -81,7 +80,7 @@ function Search() {
           />
         </header>
         {error && <ErrorMessage message={error} />}
-        {filteredCategories.map((category) => <Category key={category.name} category={category} />)}
+        {categories.map((category) => <Category key={category.name} category={category} />)}
       </div>
     </div>
 
