@@ -13,7 +13,7 @@ https://github.com/Marc-Chiu/MashUp
 - **Home Page:** Displays all restaurants. Enables users to add the restaurant to a group.
 - **Groups Page:** Displays all groups the user is a part of. Allows users to create their own or join another group. Users also have the ability to use the search filter bar to quickly locate a specific group and also access individual group pages.
 - **GroupHome Page:** Individual group page that displays a list of restaurants that members have added to the group. Allows users to also remove restaurants from the group. 
-- **Search Page:** Allows users to search for food and restaurants via categories based on their preferences. 
+- **Search Page:** Allows users to search for food and restaurants via categories based on their preferences (not completed). 
 
 ## Setup and Run
 1. Run `npm install` 
