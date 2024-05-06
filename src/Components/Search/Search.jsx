@@ -20,14 +20,13 @@ ErrorMessage.propTypes = {
 };
 
 function Category({ category }) {
-const name = category["category"];
-  return (
-    <Link to={name}>
-      <div className="category-container">
-        <h2>{name}</h2>
-      </div>
-    </Link>
-  );
+    return (
+        <Link to={`/restaurants/${category.category}`}>
+            <div className="category-container">
+                <h2>{category.category}</h2>
+            </div>
+        </Link>
+    );
 }
 
 Category.propTypes = {
@@ -46,32 +45,40 @@ function categoriesObjectToArray({ Data }) {
 function Search() {
   const [error, setError] = useState('');
   const [categories, setCategories] = useState([]);
+  const [filteredCategories, setFilteredCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
   const fetchCategories = () => {
-    axios.get(CATEGORY_ENDPOINTS)
-      .then(({ data }) => setCategories(categoriesObjectToArray(data)))
+    axios.get(CATEGORY_ENDPOINTS)  
+      .then((response) => {
+        const categoriesArray = categoriesObjectToArray(response.data);
+        setCategories(categoriesArray);
+        setFilteredCategories(categoriesArray); 
+      })
       .catch(() => setError('There was a problem retrieving the list of categories.'));
   };
-
+  
   useEffect(fetchCategories, []);
 
   const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
+    const value = event.target.value;
+    setSearchTerm(value);
+    if (value) {
+      const filtered = categories.filter(category =>
+        category?.category?.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilteredCategories(filtered);
+    } else {
+      setFilteredCategories(categories);
+    }
   };
-
-  // const filteredCategories = categories.filter(category =>
-  //   category.name && category.name.toLowerCase().includes(searchTerm.toLowerCase())
-  // );
 
   return (
     <div>
       <Navbar />
       <div className="wrapper">
         <header>
-          <h1>
-            Search
-          </h1>
+          <h1>Search</h1>
           <input
             type="text"
             placeholder="Search categories..."
@@ -80,10 +87,11 @@ function Search() {
           />
         </header>
         {error && <ErrorMessage message={error} />}
-        {categories.map((category) => <Category key={category.name} category={category} />)}
+        {filteredCategories.map((category, index) => (
+          <Category key={index} category={category} />
+        ))}
       </div>
     </div>
-
   );
 }
 
